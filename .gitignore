@@ -34,6 +34,8 @@ dist
 
 *token.json*
 *credentials.json*
+.env
+.emergent/
 
 # Logs and debug files
 npm-debug.log*
