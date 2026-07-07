@@ -16,7 +16,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Haptics from 'expo-haptics';
 
 import { colors, fonts, radius, spacing } from '@/src/theme/tokens';
-import { SALON, HERO_IMAGE, CATEGORIES, REVIEWS } from '@/src/data/salon';
+import { SALON, HERO_IMAGE, CATEGORIES, REVIEWS, GALLERY } from '@/src/data/salon';
 import GoldButton from '@/src/components/GoldButton';
 
 const { width } = Dimensions.get('window');
@@ -142,6 +142,29 @@ export default function HomeScreen() {
             </Pressable>
           ))}
         </ScrollView>
+
+        {/* GALLERY */}
+        <View style={styles.sectionHeaderRow}>
+          <View>
+            <Text style={styles.sectionLabel}>Gallery</Text>
+            <Text style={styles.sectionSub}>Our recent work</Text>
+          </View>
+          <Pressable testID="see-all-gallery" onPress={() => router.push('/gallery')}>
+            <Text style={styles.seeAll}>View all →</Text>
+          </Pressable>
+        </View>
+        <View style={styles.galleryGrid}>
+          {GALLERY.map((url, i) => (
+            <Pressable
+              key={`${url}-${i}`}
+              testID={`home-gallery-${i}`}
+              onPress={() => router.push('/gallery')}
+              style={styles.galleryCell}
+            >
+              <Image source={url} style={styles.galleryImg} contentFit="cover" />
+            </Pressable>
+          ))}
+        </View>
 
         {/* REVIEWS */}
         <SectionTitle label="Loved by Delhi" sub={`${SALON.rating}/5 from real guests`} />
@@ -502,6 +525,20 @@ const styles = StyleSheet.create({
   },
   infoLabel: { color: colors.muted, fontSize: 10, letterSpacing: 2, fontFamily: fonts.bodyMedium },
   infoValue: { color: colors.onSurface, fontSize: 13, fontFamily: fonts.body, marginTop: 4, lineHeight: 19 },
+  galleryGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingHorizontal: spacing.lg,
+    gap: 6,
+  },
+  galleryCell: {
+    width: (width - spacing.lg * 2 - 12) / 3,
+    aspectRatio: 1,
+    borderRadius: radius.md,
+    overflow: 'hidden',
+    backgroundColor: colors.surfaceSecondary,
+  },
+  galleryImg: { width: '100%', height: '100%' },
   directionsBtn: {
     flexDirection: 'row',
     alignItems: 'center',
