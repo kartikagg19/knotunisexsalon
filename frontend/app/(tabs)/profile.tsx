@@ -6,18 +6,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Haptics from 'expo-haptics';
 
 import { colors, fonts, radius, spacing } from '@/src/theme/tokens';
-import { useBookings } from '@/src/context/BookingContext';
 import { SALON } from '@/src/data/salon';
 
 export default function ProfileScreen() {
   const insets = useSafeAreaInsets();
-  const { bookings, cancelBooking } = useBookings();
   const router = useRouter();
-
-  const onCancel = (id: string) => {
-    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning).catch(() => {});
-    cancelBooking(id);
-  };
 
   return (
     <ScrollView
@@ -64,55 +57,6 @@ export default function ProfileScreen() {
           testID="qa-visit"
         />
       </View>
-
-      {/* My Bookings */}
-      <Text style={styles.sectionTitle}>My Appointments</Text>
-      <Text style={styles.sectionSub}>{bookings.length} {bookings.length === 1 ? 'booking' : 'bookings'}</Text>
-
-      {bookings.length === 0 ? (
-        <View style={styles.empty}>
-          <Ionicons name="calendar-outline" size={36} color={colors.muted} />
-          <Text style={styles.emptyTitle}>No upcoming appointments</Text>
-          <Text style={styles.emptySub}>Book your first treatment in seconds.</Text>
-          <Pressable
-            testID="empty-book-btn"
-            style={styles.emptyBtn}
-            onPress={() => router.push('/booking')}
-          >
-            <Text style={styles.emptyBtnText}>Book Now</Text>
-          </Pressable>
-        </View>
-      ) : (
-        <View style={{ paddingHorizontal: spacing.lg, gap: spacing.md }}>
-          {bookings.map((b) => (
-            <View key={b.id} style={styles.bookingCard} testID={`booking-${b.id}`}>
-              <View style={styles.bookingTop}>
-                <View style={styles.dateBox}>
-                  <Text style={styles.dateDay}>{new Date(b.date).getDate()}</Text>
-                  <Text style={styles.dateMon}>{new Date(b.date).toLocaleString('en-US', { month: 'short' }).toUpperCase()}</Text>
-                </View>
-                <View style={{ flex: 1 }}>
-                  <Text style={styles.bookingName} numberOfLines={1}>{b.serviceName}</Text>
-                  <Text style={styles.bookingTier}>{b.tierLabel} · ₹{b.price}</Text>
-                  <View style={styles.bookingMeta}>
-                    <Ionicons name="time-outline" size={11} color={colors.muted} />
-                    <Text style={styles.bookingMetaText}>{b.time}</Text>
-                    <Ionicons name="person-outline" size={11} color={colors.muted} style={{ marginLeft: 8 }} />
-                    <Text style={styles.bookingMetaText}>{b.stylistName}</Text>
-                  </View>
-                </View>
-              </View>
-              <Pressable
-                testID={`cancel-${b.id}`}
-                onPress={() => onCancel(b.id)}
-                style={styles.cancelBtn}
-              >
-                <Text style={styles.cancelText}>Cancel</Text>
-              </Pressable>
-            </View>
-          ))}
-        </View>
-      )}
 
       {/* Links */}
       <View style={styles.linksGroup}>
