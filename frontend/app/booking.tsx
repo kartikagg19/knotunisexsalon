@@ -46,8 +46,8 @@ export default function BookingFlow() {
     ];
     if (notes.trim()) lines.push(`Notes: ${notes.trim()}`);
     const msg = encodeURIComponent(lines.join('\n'));
-    // Send the booking details to the salon owner's WhatsApp
-    Linking.openURL(`https://wa.me/${SALON.whatsapp}?text=${msg}`).catch(() => {});
+    // Send the booking details to the salon's booking WhatsApp number
+    Linking.openURL(`https://wa.me/${SALON.bookingWhatsapp}?text=${msg}`).catch(() => {});
     setBooked(true);
   };
 

@@ -6,6 +6,7 @@ export const SALON = {
   phone: '08506031314',
   phoneDisplay: '+91 85060 31314',
   whatsapp: '918506031314',
+  bookingWhatsapp: '918587044276', // number that receives booking requests (testing)
   rating: 4.9,
   reviewCount: 67,
   hours: '10:30 AM – 9:00 PM',
