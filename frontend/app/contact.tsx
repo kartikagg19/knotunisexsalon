@@ -77,7 +77,7 @@ export default function ContactScreen() {
           <View style={{ flex: 1 }}>
             <Text style={styles.rowLabel}>Hours</Text>
             <Text style={styles.rowValue}>{SALON.hours}</Text>
-            <Text style={styles.rowSub}>Mon – Sun · 10:00 AM – 10:00 PM</Text>
+            <Text style={styles.rowSub}>Mon – Sun</Text>
           </View>
         </View>
 

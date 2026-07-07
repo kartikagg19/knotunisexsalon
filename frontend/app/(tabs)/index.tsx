@@ -16,7 +16,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Haptics from 'expo-haptics';
 
 import { colors, fonts, radius, spacing } from '@/src/theme/tokens';
-import { SALON, HERO_IMAGE, CATEGORIES, SERVICES, STYLISTS, OFFERS, REVIEWS } from '@/src/data/salon';
+import { SALON, HERO_IMAGE, CATEGORIES, REVIEWS } from '@/src/data/salon';
 import GoldButton from '@/src/components/GoldButton';
 
 const { width } = Dimensions.get('window');
@@ -24,7 +24,6 @@ const { width } = Dimensions.get('window');
 export default function HomeScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const featured = SERVICES.filter((s) => s.featured);
 
   const call = () => {
     Haptics.selectionAsync().catch(() => {});
@@ -33,6 +32,15 @@ export default function HomeScreen() {
   const whatsapp = () => {
     Haptics.selectionAsync().catch(() => {});
     Linking.openURL(`https://wa.me/${SALON.whatsapp}`).catch(() => {});
+  };
+  const instagram = () => {
+    Haptics.selectionAsync().catch(() => {});
+    Linking.openURL(SALON.instagram).catch(() => {});
+  };
+  const directions = () => {
+    Haptics.selectionAsync().catch(() => {});
+    const q = encodeURIComponent(SALON.address);
+    Linking.openURL(`https://www.google.com/maps/search/?api=1&query=${q}`).catch(() => {});
   };
 
   return (
@@ -96,6 +104,13 @@ export default function HomeScreen() {
               >
                 <Ionicons name="logo-whatsapp" size={20} color={colors.brand} />
               </Pressable>
+              <Pressable
+                testID="hero-ig-btn"
+                onPress={instagram}
+                style={styles.circleBtn}
+              >
+                <Ionicons name="logo-instagram" size={20} color={colors.brand} />
+              </Pressable>
             </View>
           </View>
         </View>
@@ -128,88 +143,6 @@ export default function HomeScreen() {
           ))}
         </ScrollView>
 
-        {/* SIGNATURE SERVICES */}
-        <SectionTitle label="Signature" sub="Most-loved by our guests" />
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ paddingHorizontal: spacing.lg, gap: spacing.md }}
-        >
-          {featured.map((s) => (
-            <Pressable
-              key={s.id}
-              testID={`featured-${s.id}`}
-              onPress={() => router.push(`/service/${s.id}`)}
-              style={styles.featCard}
-            >
-              <Image source={s.image} style={styles.featImg} contentFit="cover" />
-              <LinearGradient
-                colors={['transparent', 'rgba(0,0,0,0.85)']}
-                style={StyleSheet.absoluteFill}
-              />
-              <View style={styles.featBody}>
-                <Text style={styles.featName} numberOfLines={2}>{s.name}</Text>
-                <View style={styles.featMeta}>
-                  <View style={styles.metaPill}>
-                    <Ionicons name="time-outline" size={12} color={colors.brand} />
-                    <Text style={styles.metaText}>{s.duration} min</Text>
-                  </View>
-                  <Text style={styles.featPrice}>from ₹{s.tiers[0].price}</Text>
-                </View>
-              </View>
-            </Pressable>
-          ))}
-        </ScrollView>
-
-        {/* OFFERS */}
-        <SectionTitle label="Offers" sub="Limited-time packages" />
-        <View style={{ paddingHorizontal: spacing.lg, gap: spacing.md }}>
-          {OFFERS.map((o) => (
-            <Pressable key={o.id} testID={`offer-${o.id}`} style={styles.offerCard} onPress={() => router.push('/booking')}>
-              <Image source={o.image} style={StyleSheet.absoluteFillObject} contentFit="cover" />
-              <LinearGradient
-                colors={['rgba(15,16,20,0.4)', 'rgba(15,16,20,0.95)']}
-                style={StyleSheet.absoluteFill}
-              />
-              <View style={styles.offerBody}>
-                <Text style={styles.offerBadge}>{o.discount}</Text>
-                <Text style={styles.offerTitle}>{o.title}</Text>
-                <Text style={styles.offerSub}>{o.subtitle}</Text>
-              </View>
-              <Ionicons
-                name="arrow-forward-circle"
-                size={32}
-                color={colors.brand}
-                style={styles.offerArrow}
-              />
-            </Pressable>
-          ))}
-        </View>
-
-        {/* STYLISTS */}
-        <View style={styles.sectionHeaderRow}>
-          <View>
-            <Text style={styles.sectionLabel}>Meet the experts</Text>
-            <Text style={styles.sectionSub}>Award-winning artists</Text>
-          </View>
-          <Pressable testID="see-all-stylists" onPress={() => router.push('/stylists')}>
-            <Text style={styles.seeAll}>See all →</Text>
-          </Pressable>
-        </View>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ paddingHorizontal: spacing.lg, gap: spacing.md }}
-        >
-          {STYLISTS.slice(0, 5).map((st) => (
-            <View key={st.id} style={styles.stylistCard} testID={`stylist-mini-${st.id}`}>
-              <Image source={st.image} style={styles.stylistImg} contentFit="cover" />
-              <Text style={styles.stylistName}>{st.name}</Text>
-              <Text style={styles.stylistTitle}>{st.title}</Text>
-            </View>
-          ))}
-        </ScrollView>
-
         {/* REVIEWS */}
         <SectionTitle label="Loved by Delhi" sub={`${SALON.rating}/5 from real guests`} />
         <ScrollView
@@ -238,19 +171,63 @@ export default function HomeScreen() {
           ))}
         </ScrollView>
 
-        {/* GALLERY CTA */}
-        <Pressable
-          testID="gallery-cta"
-          onPress={() => router.push('/gallery')}
-          style={styles.galleryCta}
-        >
-          <Ionicons name="images-outline" size={22} color={colors.brand} />
-          <View style={{ flex: 1 }}>
-            <Text style={styles.galleryTitle}>Browse our portfolio</Text>
-            <Text style={styles.gallerySub}>See real client transformations</Text>
+        {/* VISIT US */}
+        <SectionTitle label="Visit Us" sub="Book an appointment or drop by" />
+        <View style={styles.visitWrap}>
+          <View style={styles.infoRow}>
+            <View style={styles.infoIcon}>
+              <Ionicons name="location-outline" size={18} color={colors.brand} />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.infoLabel}>ADDRESS</Text>
+              <Text style={styles.infoValue}>{SALON.address}</Text>
+            </View>
           </View>
-          <Ionicons name="chevron-forward" size={20} color={colors.muted} />
-        </Pressable>
+          <View style={styles.infoRow}>
+            <View style={styles.infoIcon}>
+              <Ionicons name="time-outline" size={18} color={colors.brand} />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.infoLabel}>HOURS</Text>
+              <Text style={styles.infoValue}>Mon – Sun · {SALON.hours}</Text>
+            </View>
+          </View>
+          <Pressable style={styles.infoRow} testID="visit-call" onPress={call}>
+            <View style={styles.infoIcon}>
+              <Ionicons name="call-outline" size={18} color={colors.brand} />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.infoLabel}>CALL US</Text>
+              <Text style={styles.infoValue}>{SALON.phoneDisplay}</Text>
+            </View>
+          </Pressable>
+
+          <GoldButton
+            label="Book Appointment"
+            onPress={() => router.push('/booking')}
+            testID="visit-book-btn"
+            style={{ marginTop: spacing.md }}
+          />
+
+          <View style={styles.actionRow}>
+            <Pressable style={styles.actionBtn} testID="action-call" onPress={call}>
+              <Ionicons name="call" size={20} color={colors.brand} />
+              <Text style={styles.actionText}>Call</Text>
+            </Pressable>
+            <Pressable style={styles.actionBtn} testID="action-wa" onPress={whatsapp}>
+              <Ionicons name="logo-whatsapp" size={20} color={colors.brand} />
+              <Text style={styles.actionText}>WhatsApp</Text>
+            </Pressable>
+            <Pressable style={styles.actionBtn} testID="action-ig" onPress={instagram}>
+              <Ionicons name="logo-instagram" size={20} color={colors.brand} />
+              <Text style={styles.actionText}>Instagram</Text>
+            </Pressable>
+            <Pressable style={styles.actionBtn} testID="action-map" onPress={directions}>
+              <Ionicons name="navigate" size={20} color={colors.brand} />
+              <Text style={styles.actionText}>Directions</Text>
+            </Pressable>
+          </View>
+        </View>
       </ScrollView>
     </View>
   );
@@ -506,4 +483,47 @@ const styles = StyleSheet.create({
   },
   galleryTitle: { color: colors.onSurface, fontFamily: fonts.bodyMedium, fontSize: 14 },
   gallerySub: { color: colors.muted, fontSize: 12, fontFamily: fonts.body, marginTop: 2 },
+  visitWrap: {
+    marginHorizontal: spacing.lg,
+    padding: spacing.lg,
+    backgroundColor: colors.surfaceSecondary,
+    borderRadius: radius.lg,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  infoRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: spacing.md,
+    paddingVertical: spacing.md,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.divider,
+  },
+  infoIcon: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: 'rgba(212,175,55,0.1)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  infoLabel: { color: colors.muted, fontSize: 10, letterSpacing: 2, fontFamily: fonts.bodyMedium },
+  infoValue: { color: colors.onSurface, fontSize: 13, fontFamily: fonts.body, marginTop: 4, lineHeight: 19 },
+  actionRow: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+    marginTop: spacing.md,
+  },
+  actionBtn: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    paddingVertical: spacing.md,
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderColor: colors.borderStrong,
+    backgroundColor: 'rgba(212,175,55,0.06)',
+  },
+  actionText: { color: colors.onSurfaceSecondary, fontSize: 11, fontFamily: fonts.bodyMedium },
 });

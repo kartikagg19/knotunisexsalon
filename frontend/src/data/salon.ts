@@ -8,7 +8,8 @@ export const SALON = {
   whatsapp: '918506031314',
   rating: 4.9,
   reviewCount: 67,
-  hours: 'Open · Closes 10 PM',
+  hours: '10:30 AM – 9:00 PM',
+  instagram: 'https://instagram.com/knottunisexsalon',
   established: 2023,
 };
 
@@ -198,6 +199,53 @@ export const SERVICES: Service[] = [
     duration: 45,
     tiers: [{ label: 'Standard', price: 499 }],
     image: IMG.haircut,
+  },
+
+  // ---------- HAIR CHEMICAL ----------
+  {
+    id: 's49',
+    categoryId: 'hair',
+    name: 'Keratin Treatment',
+    description: 'Frizz-control keratin treatment for smooth, manageable, shiny hair.',
+    duration: 180,
+    tiers: [{ label: 'Standard', price: 1999 }],
+    image: IMG.hairspa,
+  },
+  {
+    id: 's50',
+    categoryId: 'hair',
+    name: 'Hair Smoothening',
+    description: 'Long-lasting smoothening for sleek, straight, frizz-free hair.',
+    duration: 180,
+    tiers: [{ label: 'Standard', price: 2999 }],
+    image: IMG.hairspa,
+  },
+  {
+    id: 's51',
+    categoryId: 'hair',
+    name: 'Global Hair Colour',
+    description: 'Full-head colour transformation using premium formulas.',
+    duration: 120,
+    tiers: [{ label: 'Standard', price: 2499 }],
+    image: IMG.haircolour,
+  },
+  {
+    id: 's52',
+    categoryId: 'hair',
+    name: 'Highlights',
+    description: 'Custom highlights to add dimension, depth and shine.',
+    duration: 120,
+    tiers: [{ label: 'Standard', price: 2499 }],
+    image: IMG.haircolour,
+  },
+  {
+    id: 's53',
+    categoryId: 'hair',
+    name: 'Nano Plastia',
+    description: 'Advanced nano plastia treatment for deep repair and lasting smoothness.',
+    duration: 180,
+    tiers: [{ label: 'Standard', price: 3999 }],
+    image: IMG.hairspa,
   },
 
   // ---------- FACIAL & CLEANUP ----------
@@ -463,7 +511,6 @@ export const SERVICES: Service[] = [
     description: 'De-tan treatment to remove tan and reveal brighter skin.',
     duration: 30,
     tiers: [
-      { label: 'Basic', price: 199 },
       { label: 'Sara', price: 350 },
       { label: 'Raga', price: 400 },
       { label: 'O3+', price: 600 },
@@ -591,11 +638,10 @@ export const SERVICES: Service[] = [
   {
     id: 's45',
     categoryId: 'makeup',
-    name: 'Party Makeup',
+    name: 'Makeup',
     description: 'Camera-ready makeup for parties and special occasions.',
     duration: 75,
     tiers: [
-      { label: 'Basic', price: 999 },
       { label: 'Normal', price: 1800 },
       { label: 'HD', price: 2500 },
       { label: 'Celebrity', price: 4500 },
