@@ -77,9 +77,9 @@ export default function HomeScreen() {
             <View style={styles.ratingRow}>
               <Ionicons name="star" size={14} color={colors.brand} />
               <Text style={styles.ratingText}>{SALON.rating}</Text>
-              <Text style={styles.ratingSub}>· {SALON.reviewCount} reviews · {SALON.location}</Text>
+              <Text style={styles.ratingSub}>· {SALON.location}</Text>
             </View>
-            <Text style={styles.heroTitle}>Luxury crafted{'\n'}for every guest.</Text>
+            <Text style={styles.heroTitle}>Nail, Makeup, Beauty,{'\n'}Skin, Hair | Luxury Salon</Text>
             <Text style={styles.heroBody}>
               Editorial hair, flawless makeup, hand-painted nails and skin therapy by award-winning artists.
             </Text>
@@ -202,31 +202,24 @@ export default function HomeScreen() {
             </View>
           </Pressable>
 
-          <GoldButton
-            label="Book Appointment"
-            onPress={() => router.push('/booking')}
-            testID="visit-book-btn"
-            style={{ marginTop: spacing.md }}
-          />
+          <Pressable style={styles.directionsBtn} testID="action-map" onPress={directions}>
+            <Ionicons name="navigate" size={18} color={colors.brand} />
+            <Text style={styles.directionsText}>Get Directions</Text>
+          </Pressable>
+        </View>
 
-          <View style={styles.actionRow}>
-            <Pressable style={styles.actionBtn} testID="action-call" onPress={call}>
-              <Ionicons name="call" size={20} color={colors.brand} />
-              <Text style={styles.actionText}>Call</Text>
-            </Pressable>
-            <Pressable style={styles.actionBtn} testID="action-wa" onPress={whatsapp}>
-              <Ionicons name="logo-whatsapp" size={20} color={colors.brand} />
-              <Text style={styles.actionText}>WhatsApp</Text>
-            </Pressable>
-            <Pressable style={styles.actionBtn} testID="action-ig" onPress={instagram}>
-              <Ionicons name="logo-instagram" size={20} color={colors.brand} />
-              <Text style={styles.actionText}>Instagram</Text>
-            </Pressable>
-            <Pressable style={styles.actionBtn} testID="action-map" onPress={directions}>
-              <Ionicons name="navigate" size={20} color={colors.brand} />
-              <Text style={styles.actionText}>Directions</Text>
-            </Pressable>
-          </View>
+        {/* FOOTER */}
+        <View style={styles.footer}>
+          <Text style={styles.footerName}>{SALON.name}</Text>
+          <Text style={styles.footerTag}>{SALON.tagline} · {SALON.location}</Text>
+          <Text style={styles.footerAddr}>{SALON.address}</Text>
+          <Pressable style={styles.footerPhone} testID="footer-call" onPress={call}>
+            <Ionicons name="call" size={14} color={colors.brand} />
+            <Text style={styles.footerPhoneText}>{SALON.phoneDisplay}</Text>
+          </Pressable>
+          <Text style={styles.footerCopy}>
+            © {new Date().getFullYear()} {SALON.name}. All rights reserved.
+          </Text>
         </View>
       </ScrollView>
     </View>
@@ -509,21 +502,47 @@ const styles = StyleSheet.create({
   },
   infoLabel: { color: colors.muted, fontSize: 10, letterSpacing: 2, fontFamily: fonts.bodyMedium },
   infoValue: { color: colors.onSurface, fontSize: 13, fontFamily: fonts.body, marginTop: 4, lineHeight: 19 },
-  actionRow: {
+  directionsBtn: {
     flexDirection: 'row',
-    gap: spacing.sm,
-    marginTop: spacing.md,
-  },
-  actionBtn: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 6,
+    gap: 8,
+    marginTop: spacing.md,
     paddingVertical: spacing.md,
     borderRadius: radius.md,
     borderWidth: 1,
-    borderColor: colors.borderStrong,
-    backgroundColor: 'rgba(212,175,55,0.06)',
+    borderColor: colors.brand,
+    backgroundColor: 'rgba(212,175,55,0.08)',
   },
-  actionText: { color: colors.onSurfaceSecondary, fontSize: 11, fontFamily: fonts.bodyMedium },
+  directionsText: { color: colors.brand, fontSize: 13, fontFamily: fonts.bodyMedium },
+  footer: {
+    alignItems: 'center',
+    paddingHorizontal: spacing.lg,
+    paddingTop: spacing.xxl,
+    paddingBottom: spacing.lg,
+  },
+  footerName: { color: colors.onSurface, fontFamily: fonts.display, fontSize: 22 },
+  footerTag: { color: colors.brand, fontSize: 11, letterSpacing: 1, fontFamily: fonts.bodyMedium, marginTop: 4 },
+  footerAddr: {
+    color: colors.muted,
+    fontSize: 12,
+    fontFamily: fonts.body,
+    textAlign: 'center',
+    marginTop: spacing.md,
+    lineHeight: 18,
+    maxWidth: 300,
+  },
+  footerPhone: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginTop: spacing.md,
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.sm,
+    borderRadius: radius.pill,
+    borderWidth: 1,
+    borderColor: colors.brand,
+  },
+  footerPhoneText: { color: colors.brand, fontSize: 13, fontFamily: fonts.bodyMedium },
+  footerCopy: { color: colors.muted, fontSize: 11, fontFamily: fonts.body, marginTop: spacing.lg },
 });

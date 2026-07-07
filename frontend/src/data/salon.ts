@@ -10,7 +10,7 @@ export const SALON = {
   reviewCount: 67,
   hours: '10:30 AM – 9:00 PM',
   instagram: 'https://instagram.com/knottunisexsalon',
-  established: 2023,
+  established: 2021,
 };
 
 export const HERO_IMAGE =

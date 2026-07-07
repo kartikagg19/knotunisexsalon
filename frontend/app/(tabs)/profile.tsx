@@ -52,12 +52,6 @@ export default function ProfileScreen() {
           testID="qa-book"
         />
         <QuickAction
-          icon="people-outline"
-          label="Stylists"
-          onPress={() => router.push('/stylists')}
-          testID="qa-stylists"
-        />
-        <QuickAction
           icon="images-outline"
           label="Gallery"
           onPress={() => router.push('/gallery')}
@@ -69,16 +63,6 @@ export default function ProfileScreen() {
           onPress={() => router.push('/contact')}
           testID="qa-visit"
         />
-      </View>
-
-      {/* Loyalty Card */}
-      <View style={styles.loyalty}>
-        <View>
-          <Text style={styles.loyaltyKicker}>KNOTT GOLD</Text>
-          <Text style={styles.loyaltyTitle}>Loyalty Points</Text>
-          <Text style={styles.loyaltyValue}>0 pts</Text>
-        </View>
-        <Ionicons name="diamond" size={36} color={colors.brand} />
       </View>
 
       {/* My Bookings */}
@@ -134,7 +118,7 @@ export default function ProfileScreen() {
       <View style={styles.linksGroup}>
         <LinkRow icon="call-outline" label="Call salon" sub={SALON.phoneDisplay} onPress={() => Linking.openURL(`tel:${SALON.phone}`).catch(() => {})} testID="link-call" />
         <LinkRow icon="logo-whatsapp" label="WhatsApp us" sub="Quick replies" onPress={() => Linking.openURL(`https://wa.me/${SALON.whatsapp}`).catch(() => {})} testID="link-wa" />
-        <LinkRow icon="logo-instagram" label="Instagram" sub="See latest looks" onPress={() => Linking.openURL('https://instagram.com').catch(() => {})} testID="link-ig" />
+        <LinkRow icon="logo-instagram" label="Instagram" sub="See latest looks" onPress={() => Linking.openURL(SALON.instagram).catch(() => {})} testID="link-ig" />
         <LinkRow icon="help-circle-outline" label="Help & Support" sub="FAQs and contact" onPress={() => {}} testID="link-help" last />
       </View>
     </ScrollView>
