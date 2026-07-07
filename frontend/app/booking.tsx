@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable, TextInput, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
@@ -6,8 +6,19 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Haptics from 'expo-haptics';
 
 import { colors, fonts, radius, spacing } from '@/src/theme/tokens';
-import { SERVICES, SALON } from '@/src/data/salon';
+import { SERVICES, SALON, TIME_SLOTS } from '@/src/data/salon';
 import GoldButton from '@/src/components/GoldButton';
+
+function getNextDays(n: number) {
+  const days: Date[] = [];
+  const today = new Date();
+  for (let i = 0; i < n; i++) {
+    const d = new Date(today);
+    d.setDate(today.getDate() + i);
+    days.push(d);
+  }
+  return days;
+}
 
 export default function BookingFlow() {
   const params = useLocalSearchParams<{ serviceId?: string }>();
@@ -18,17 +29,21 @@ export default function BookingFlow() {
   const [phone, setPhone] = useState('');
   const [serviceId, setServiceId] = useState<string>(params.serviceId || '');
   const [pickerOpen, setPickerOpen] = useState(false);
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState<Date | null>(null);
   const [time, setTime] = useState('');
   const [notes, setNotes] = useState('');
   const [booked, setBooked] = useState(false);
 
+  const days = useMemo(() => getNextDays(21), []);
   const service = SERVICES.find((s) => s.id === serviceId);
+  const dateLabel = date
+    ? date.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })
+    : '';
   const valid =
     name.trim().length > 0 &&
     phone.trim().length >= 10 &&
     !!service &&
-    date.trim().length > 0 &&
+    !!date &&
     time.trim().length > 0;
 
   const handleConfirm = () => {
@@ -41,7 +56,7 @@ export default function BookingFlow() {
       `Name: ${name}`,
       `Phone: ${phone}`,
       `Service: ${service.name}`,
-      `Date: ${date}`,
+      `Date: ${dateLabel}`,
       `Time: ${time}`,
     ];
     if (notes.trim()) lines.push(`Notes: ${notes.trim()}`);
@@ -72,7 +87,7 @@ export default function BookingFlow() {
           <SummaryRow label="Name" value={name} />
           <SummaryRow label="Phone" value={phone} />
           <SummaryRow label="Service" value={service?.name || '—'} />
-          <SummaryRow label="Date" value={date} />
+          <SummaryRow label="Date" value={dateLabel} />
           <SummaryRow label="Time" value={time} />
         </View>
 
@@ -148,34 +163,60 @@ export default function BookingFlow() {
           <Ionicons name="chevron-down" size={18} color={colors.muted} />
         </Pressable>
 
-        {/* Date & Time */}
-        <View style={styles.rowTwo}>
-          <View style={{ flex: 1 }}>
-            <Text style={styles.label}>
-              Date <Text style={styles.req}>*</Text>
-            </Text>
-            <TextInput
-              testID="input-date"
-              value={date}
-              onChangeText={setDate}
-              placeholder="DD/MM/YY"
-              placeholderTextColor={colors.muted}
-              style={styles.input}
-            />
-          </View>
-          <View style={{ flex: 1 }}>
-            <Text style={styles.label}>
-              Time <Text style={styles.req}>*</Text>
-            </Text>
-            <TextInput
-              testID="input-time"
-              value={time}
-              onChangeText={setTime}
-              placeholder="e.g. 5:00 PM"
-              placeholderTextColor={colors.muted}
-              style={styles.input}
-            />
-          </View>
+        {/* Date */}
+        <Text style={styles.label}>
+          Date <Text style={styles.req}>*</Text>
+        </Text>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ gap: spacing.sm, paddingVertical: 2 }}
+        >
+          {days.map((d) => {
+            const sel = !!date && d.toDateString() === date.toDateString();
+            return (
+              <Pressable
+                key={d.toISOString()}
+                testID={`date-${d.getDate()}`}
+                onPress={() => {
+                  Haptics.selectionAsync().catch(() => {});
+                  setDate(d);
+                }}
+                style={[styles.dateCard, sel && styles.dateCardActive]}
+              >
+                <Text style={[styles.dateDow, sel && { color: colors.onBrandPrimary }]}>
+                  {d.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase()}
+                </Text>
+                <Text style={[styles.dateNum, sel && { color: colors.onBrandPrimary }]}>{d.getDate()}</Text>
+                <Text style={[styles.dateMon, sel && { color: colors.onBrandPrimary }]}>
+                  {d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </ScrollView>
+
+        {/* Time */}
+        <Text style={styles.label}>
+          Time <Text style={styles.req}>*</Text>
+        </Text>
+        <View style={styles.slotGrid}>
+          {TIME_SLOTS.map((t) => {
+            const sel = time === t;
+            return (
+              <Pressable
+                key={t}
+                testID={`slot-${t}`}
+                onPress={() => {
+                  Haptics.selectionAsync().catch(() => {});
+                  setTime(t);
+                }}
+                style={[styles.slot, sel && styles.slotActive]}
+              >
+                <Text style={[styles.slotText, sel && { color: colors.onBrandPrimary }]}>{t}</Text>
+              </Pressable>
+            );
+          })}
         </View>
 
         {/* Notes */}
@@ -289,7 +330,29 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.md,
   },
   selectText: { color: colors.onSurface, fontSize: 14, fontFamily: fonts.body },
-  rowTwo: { flexDirection: 'row', gap: spacing.md },
+  dateCard: {
+    width: 60, paddingVertical: spacing.md,
+    borderRadius: radius.md,
+    backgroundColor: colors.surfaceSecondary,
+    borderWidth: 1, borderColor: colors.border,
+    alignItems: 'center',
+    flexShrink: 0,
+  },
+  dateCardActive: { backgroundColor: colors.brand, borderColor: colors.brand },
+  dateDow: { color: colors.muted, fontSize: 10, letterSpacing: 1, fontFamily: fonts.bodyMedium },
+  dateNum: { color: colors.onSurface, fontFamily: fonts.display, fontSize: 24, marginTop: 2 },
+  dateMon: { color: colors.muted, fontSize: 9, fontFamily: fonts.bodyMedium, letterSpacing: 1, marginTop: 2 },
+  slotGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, marginTop: spacing.sm },
+  slot: {
+    width: '31%',
+    paddingVertical: spacing.md,
+    borderRadius: radius.md,
+    borderWidth: 1, borderColor: colors.border,
+    backgroundColor: colors.surfaceSecondary,
+    alignItems: 'center',
+  },
+  slotActive: { backgroundColor: colors.brand, borderColor: colors.brand },
+  slotText: { color: colors.onSurfaceSecondary, fontSize: 12, fontFamily: fonts.bodyMedium },
   footer: {
     position: 'absolute', left: 0, right: 0, bottom: 0,
     padding: spacing.lg,

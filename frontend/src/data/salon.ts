@@ -3,14 +3,14 @@ export const SALON = {
   tagline: 'Best Salon & Academy',
   location: 'Uttam Nagar, New Delhi',
   address: 'E-67, Arya Samaj Rd, near Muthoot Bank, Block J, Uttam Nagar, New Delhi, Delhi, 110059',
-  phone: '08506031314',
-  phoneDisplay: '+91 85060 31314',
-  whatsapp: '918506031314',
-  bookingWhatsapp: '918587044276', // number that receives booking requests (testing)
+  phone: '09716002672',
+  phoneDisplay: '+91 97160 02672',
+  whatsapp: '919716002672',
+  bookingWhatsapp: '919716002672', // owner number that receives booking requests
   rating: 4.9,
   reviewCount: 67,
   hours: '10:30 AM – 9:00 PM',
-  instagram: 'https://instagram.com/knottunisexsalon',
+  instagram: 'https://www.instagram.com/himanshmakeovers',
   established: 2021,
 };
 
