@@ -85,7 +85,7 @@ export const CATEGORIES: Category[] = [
     name: 'Bridal',
     icon: 'heart-outline',
     image:
-      'https://images.unsplash.com/photo-1560869713-da86a9ec0bca?w=900&q=85&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=900&q=85&auto=format&fit=crop',
   },
   {
     id: 'body',
@@ -120,7 +120,7 @@ const IMG = {
   nailsAlt: 'https://images.unsplash.com/photo-1633360971020-656d89f9e98e?w=1200&q=85&auto=format&fit=crop',
   nailext: 'https://images.unsplash.com/photo-1604902396830-aca29e19b067?w=1200&q=85&auto=format&fit=crop',
   makeup: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1200&q=85&auto=format&fit=crop',
-  bridal: 'https://images.unsplash.com/photo-1560869713-da86a9ec0bca?w=1200&q=85&auto=format&fit=crop',
+  bridal: 'https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=1200&q=85&auto=format&fit=crop',
   spa: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=1200&q=85&auto=format&fit=crop',
 };
 
@@ -757,7 +757,7 @@ export const STYLISTS: Stylist[] = [
 export const GALLERY = [
   'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=900&q=85&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=900&q=85&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1560869713-da86a9ec0bca?w=900&q=85&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=900&q=85&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=900&q=85&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=900&q=85&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=900&q=85&auto=format&fit=crop',
@@ -772,7 +772,7 @@ export const OFFERS = [
     title: 'Bridal Package',
     subtitle: 'Bridal makeup + hair + nails',
     discount: 'Save 25%',
-    image: 'https://images.unsplash.com/photo-1560869713-da86a9ec0bca?w=1200&q=85&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=1200&q=85&auto=format&fit=crop',
   },
   {
     id: 'o2',

@@ -100,16 +100,23 @@ export default function HomeScreen() {
               <Pressable
                 testID="hero-wa-btn"
                 onPress={whatsapp}
-                style={styles.circleBtn}
+                style={[styles.circleBtn, styles.waBtn]}
               >
-                <Ionicons name="logo-whatsapp" size={20} color={colors.brand} />
+                <Ionicons name="logo-whatsapp" size={22} color="#FFFFFF" />
               </Pressable>
               <Pressable
                 testID="hero-ig-btn"
                 onPress={instagram}
-                style={styles.circleBtn}
+                style={styles.circleBtnWrap}
               >
-                <Ionicons name="logo-instagram" size={20} color={colors.brand} />
+                <LinearGradient
+                  colors={['#FEDA75', '#FA7E1E', '#D62976', '#962FBF', '#4F5BD5']}
+                  start={{ x: 0, y: 1 }}
+                  end={{ x: 1, y: 0 }}
+                  style={styles.igGradient}
+                >
+                  <Ionicons name="logo-instagram" size={22} color="#FFFFFF" />
+                </LinearGradient>
               </Pressable>
             </View>
           </View>
@@ -349,6 +356,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'rgba(212,175,55,0.08)',
   },
+  waBtn: { backgroundColor: '#25D366', borderColor: '#25D366' },
+  circleBtnWrap: {
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+    overflow: 'hidden',
+  },
+  igGradient: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   sectionTitle: {
     paddingHorizontal: spacing.lg,
     paddingTop: spacing.xl,

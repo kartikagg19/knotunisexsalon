@@ -117,8 +117,8 @@ export default function ProfileScreen() {
       {/* Links */}
       <View style={styles.linksGroup}>
         <LinkRow icon="call-outline" label="Call salon" sub={SALON.phoneDisplay} onPress={() => Linking.openURL(`tel:${SALON.phone}`).catch(() => {})} testID="link-call" />
-        <LinkRow icon="logo-whatsapp" label="WhatsApp us" sub="Quick replies" onPress={() => Linking.openURL(`https://wa.me/${SALON.whatsapp}`).catch(() => {})} testID="link-wa" />
-        <LinkRow icon="logo-instagram" label="Instagram" sub="See latest looks" onPress={() => Linking.openURL(SALON.instagram).catch(() => {})} testID="link-ig" />
+        <LinkRow icon="logo-whatsapp" iconColor="#25D366" label="WhatsApp us" sub="Quick replies" onPress={() => Linking.openURL(`https://wa.me/${SALON.whatsapp}`).catch(() => {})} testID="link-wa" />
+        <LinkRow icon="logo-instagram" iconColor="#E1306C" label="Instagram" sub="See latest looks" onPress={() => Linking.openURL(SALON.instagram).catch(() => {})} testID="link-ig" />
         <LinkRow icon="help-circle-outline" label="Help & Support" sub="FAQs and contact" onPress={() => {}} testID="link-help" last />
       </View>
     </ScrollView>
@@ -143,11 +143,11 @@ function QuickAction({ icon, label, onPress, testID }: { icon: any; label: strin
   );
 }
 
-function LinkRow({ icon, label, sub, onPress, testID, last }: { icon: any; label: string; sub: string; onPress: () => void; testID?: string; last?: boolean }) {
+function LinkRow({ icon, label, sub, onPress, testID, last, iconColor }: { icon: any; label: string; sub: string; onPress: () => void; testID?: string; last?: boolean; iconColor?: string }) {
   return (
     <Pressable testID={testID} onPress={onPress} style={[styles.link, !last && { borderBottomWidth: 1, borderBottomColor: colors.divider }]}>
       <View style={styles.linkIcon}>
-        <Ionicons name={icon} size={18} color={colors.brand} />
+        <Ionicons name={icon} size={18} color={iconColor || colors.brand} />
       </View>
       <View style={{ flex: 1 }}>
         <Text style={styles.linkLabel}>{label}</Text>

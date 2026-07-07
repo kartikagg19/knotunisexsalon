@@ -1,5 +1,6 @@
 import React from 'react';
 import { Pressable, Text, StyleSheet, ActivityIndicator, ViewStyle } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import * as Haptics from 'expo-haptics';
 import { colors, radius, spacing, fonts } from '@/src/theme/tokens';
 
@@ -45,6 +46,14 @@ export default function GoldButton({
         style,
       ]}
     >
+      {variant === 'primary' && !disabled && !loading && (
+        <LinearGradient
+          colors={['#F0D275', '#D4AF37', '#A9821F']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={[StyleSheet.absoluteFill, { borderRadius: radius.pill }]}
+        />
+      )}
       {loading ? (
         <ActivityIndicator color={variant === 'primary' ? colors.onBrandPrimary : colors.brand} />
       ) : (
@@ -75,6 +84,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: spacing.sm,
     paddingHorizontal: spacing.xl,
+    overflow: 'hidden',
   },
   primary: { backgroundColor: colors.brand },
   outline: {
