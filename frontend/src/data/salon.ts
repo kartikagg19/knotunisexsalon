@@ -17,11 +17,28 @@ export const SALON = {
 export const HERO_IMAGE =
   'https://images.unsplash.com/photo-1675034743339-0b0747047727?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwzfHxsdXh1cnklMjBzYWxvbiUyMGludGVyaW9yJTIwaGFpcmRyZXNzaW5nfGVufDB8fHx8MTc4MjgwMDMwMnww&ixlib=rb-4.1.0&q=85';
 
+// Local salon photos (bundled from assets/gallery)
+export const LOCAL = {
+  bridal1: require('../../assets/gallery/bridal-1.jpg'),
+  bridal2: require('../../assets/gallery/bridal-2.jpg'),
+  nanoPlastia: require('../../assets/gallery/nano-plastia.jpg'),
+  smoothening: require('../../assets/gallery/smoothening.jpg'),
+  makeup: require('../../assets/gallery/makeup.jpg'),
+  eyeMakeup: require('../../assets/gallery/eye-makeup.jpg'),
+  mensHaircut: require('../../assets/gallery/mens-haircut.jpg'),
+  blowDry: require('../../assets/gallery/blow-dry.jpg'),
+  threading: require('../../assets/gallery/threading.jpg'),
+  eyebrow: require('../../assets/gallery/eyebrow.jpg'),
+  hairStyling: require('../../assets/gallery/hair-styling.jpg'),
+};
+
+export type ImageRef = string | number;
+
 export type Category = {
   id: string;
   name: string;
   icon: string;
-  image: string;
+  image: ImageRef;
 };
 
 export const CATEGORIES: Category[] = [
@@ -29,8 +46,7 @@ export const CATEGORIES: Category[] = [
     id: 'hair',
     name: 'Hair',
     icon: 'cut-outline',
-    image:
-      'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=900&q=85&auto=format&fit=crop',
+    image: LOCAL.mensHaircut,
   },
   {
     id: 'facial',
@@ -43,8 +59,7 @@ export const CATEGORIES: Category[] = [
     id: 'threading',
     name: 'Threading',
     icon: 'brush-outline',
-    image:
-      'https://images.unsplash.com/photo-1616754244574-5145c50ec179?w=900&q=85&auto=format&fit=crop',
+    image: LOCAL.threading,
   },
   {
     id: 'waxing',
@@ -78,15 +93,13 @@ export const CATEGORIES: Category[] = [
     id: 'makeup',
     name: 'Makeup',
     icon: 'color-palette-outline',
-    image:
-      'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=900&q=85&auto=format&fit=crop',
+    image: LOCAL.makeup,
   },
   {
     id: 'bridal',
     name: 'Bridal',
     icon: 'heart-outline',
-    image:
-      'https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=900&q=85&auto=format&fit=crop',
+    image: LOCAL.bridal1,
   },
   {
     id: 'body',
@@ -105,7 +118,7 @@ export type Service = {
   duration: number; // minutes
   tiers: { label: string; price: number }[];
   featured?: boolean;
-  image: string;
+  image: ImageRef;
 };
 
 const IMG = {
@@ -135,7 +148,7 @@ export const SERVICES: Service[] = [
     duration: 45,
     tiers: [{ label: 'Cut + Shave + Wash', price: 199 }],
     featured: true,
-    image: IMG.haircut,
+    image: LOCAL.mensHaircut,
   },
   {
     id: 's2',
@@ -162,7 +175,7 @@ export const SERVICES: Service[] = [
     description: 'Smooth, voluminous blow-dry styling for any occasion.',
     duration: 30,
     tiers: [{ label: 'Standard', price: 149 }],
-    image: IMG.haircut,
+    image: LOCAL.blowDry,
   },
   {
     id: 's5',
@@ -199,7 +212,7 @@ export const SERVICES: Service[] = [
     description: 'Curls, waves or set styling tailored to your look.',
     duration: 45,
     tiers: [{ label: 'Standard', price: 499 }],
-    image: IMG.haircut,
+    image: LOCAL.hairStyling,
   },
 
   // ---------- HAIR CHEMICAL ----------
@@ -219,7 +232,7 @@ export const SERVICES: Service[] = [
     description: 'Long-lasting smoothening for sleek, straight, frizz-free hair.',
     duration: 180,
     tiers: [{ label: 'Standard', price: 2999 }],
-    image: IMG.hairspa,
+    image: LOCAL.smoothening,
   },
   {
     id: 's51',
@@ -246,7 +259,7 @@ export const SERVICES: Service[] = [
     description: 'Advanced nano plastia treatment for deep repair and lasting smoothness.',
     duration: 180,
     tiers: [{ label: 'Standard', price: 3999 }],
-    image: IMG.hairspa,
+    image: LOCAL.nanoPlastia,
   },
 
   // ---------- FACIAL & CLEANUP ----------
@@ -381,7 +394,7 @@ export const SERVICES: Service[] = [
     description: 'Precise eyebrow shaping with clean, gentle threading.',
     duration: 15,
     tiers: [{ label: 'Standard', price: 40 }],
-    image: IMG.face,
+    image: LOCAL.eyebrow,
   },
   {
     id: 's22',
@@ -390,7 +403,7 @@ export const SERVICES: Service[] = [
     description: 'Smooth forehead threading for a clean finish.',
     duration: 10,
     tiers: [{ label: 'Standard', price: 30 }],
-    image: IMG.face,
+    image: LOCAL.threading,
   },
   {
     id: 's23',
@@ -399,7 +412,7 @@ export const SERVICES: Service[] = [
     description: 'Quick, gentle upper-lip threading.',
     duration: 10,
     tiers: [{ label: 'Standard', price: 20 }],
-    image: IMG.face,
+    image: LOCAL.threading,
   },
   {
     id: 's24',
@@ -408,7 +421,7 @@ export const SERVICES: Service[] = [
     description: 'Neat chin threading for smooth skin.',
     duration: 10,
     tiers: [{ label: 'Standard', price: 20 }],
-    image: IMG.face,
+    image: LOCAL.eyebrow,
   },
   {
     id: 's25',
@@ -417,7 +430,7 @@ export const SERVICES: Service[] = [
     description: 'Complete chin and jawline threading.',
     duration: 15,
     tiers: [{ label: 'Standard', price: 50 }],
-    image: IMG.face,
+    image: LOCAL.threading,
   },
 
   // ---------- WAXING ----------
@@ -648,7 +661,7 @@ export const SERVICES: Service[] = [
       { label: 'Celebrity', price: 4500 },
     ],
     featured: true,
-    image: IMG.makeup,
+    image: LOCAL.makeup,
   },
 
   // ---------- BRIDAL ----------
@@ -664,7 +677,7 @@ export const SERVICES: Service[] = [
       { label: 'Celebrity', price: 25000 },
     ],
     featured: true,
-    image: IMG.bridal,
+    image: LOCAL.bridal1,
   },
 
   // ---------- BODY & SPA ----------
@@ -755,16 +768,18 @@ export const STYLISTS: Stylist[] = [
   },
 ];
 
-export const GALLERY = [
-  'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=900&q=85&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=900&q=85&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=900&q=85&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=900&q=85&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=900&q=85&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=900&q=85&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=900&q=85&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1604902396830-aca29e19b067?w=900&q=85&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1559599101-f09722fb4948?w=900&q=85&auto=format&fit=crop',
+export const GALLERY: ImageRef[] = [
+  LOCAL.bridal1,
+  LOCAL.bridal2,
+  LOCAL.makeup,
+  LOCAL.eyeMakeup,
+  LOCAL.mensHaircut,
+  LOCAL.blowDry,
+  LOCAL.hairStyling,
+  LOCAL.threading,
+  LOCAL.eyebrow,
+  LOCAL.nanoPlastia,
+  LOCAL.smoothening,
 ];
 
 export const OFFERS = [
