@@ -11,7 +11,10 @@ import {
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
+import Animated, { useSharedValue, useAnimatedStyle, withRepeat, withTiming, Easing, withSequence } from 'react-native-reanimated';
 import { useRouter } from 'expo-router';
+
+const AnimatedImage = Animated.createAnimatedComponent(Image);
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Haptics from 'expo-haptics';
 
@@ -24,6 +27,22 @@ const { width } = Dimensions.get('window');
 export default function HomeScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
+
+  const scale = useSharedValue(1.1);
+  React.useEffect(() => {
+    scale.value = withRepeat(
+      withSequence(
+        withTiming(1.25, { duration: 18000, easing: Easing.inOut(Easing.ease) }),
+        withTiming(1.1, { duration: 18000, easing: Easing.inOut(Easing.ease) })
+      ),
+      -1,
+      true
+    );
+  }, []);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+  }));
 
   const call = () => {
     Haptics.selectionAsync().catch(() => {});
@@ -52,10 +71,10 @@ export default function HomeScreen() {
       >
         {/* HERO */}
         <View style={styles.hero}>
-          <Image source={HERO_IMAGE} style={styles.heroImg} contentFit="cover" transition={400} />
+          <AnimatedImage source={HERO_IMAGE} style={[styles.heroImg, animatedStyle]} contentFit="cover" transition={400} />
           <LinearGradient
-            colors={['rgba(15,16,20,0.55)', 'rgba(15,16,20,0.2)', 'rgba(15,16,20,0.98)']}
-            locations={[0, 0.4, 1]}
+            colors={['rgba(255,255,255,0.1)', 'rgba(255,255,255,0.75)', colors.surface]}
+            locations={[0, 0.45, 1]}
             style={StyleSheet.absoluteFill}
           />
           <View style={[styles.heroHeader, { paddingTop: insets.top + spacing.md }]}>
@@ -269,7 +288,7 @@ const HERO_H = 560;
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.surface },
-  hero: { width, height: HERO_H, backgroundColor: '#000' },
+  hero: { width, height: HERO_H, backgroundColor: colors.surfaceSecondary, overflow: 'hidden' },
   heroImg: { ...StyleSheet.absoluteFillObject },
   heroHeader: {
     position: 'absolute',
@@ -306,8 +325,8 @@ const styles = StyleSheet.create({
     height: 42,
     borderRadius: 21,
     borderWidth: 1,
-    borderColor: colors.borderStrong,
-    backgroundColor: 'rgba(26,28,35,0.6)',
+    borderColor: colors.border,
+    backgroundColor: 'rgba(255,255,255,0.8)',
     alignItems: 'center',
     justifyContent: 'center',
   },

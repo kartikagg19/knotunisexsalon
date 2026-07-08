@@ -1,27 +1,27 @@
 import { Platform } from 'react-native';
 
 export const colors = {
-  surface: '#0F1014',
-  onSurface: '#FFFFFF',
-  surfaceSecondary: '#1A1C23',
-  onSurfaceSecondary: '#EAEBEE',
-  surfaceTertiary: '#262933',
-  onSurfaceTertiary: '#D1D3D9',
-  surfaceInverse: '#FFFFFF',
-  onSurfaceInverse: '#0F1014',
+  surface: '#FFFFFF',
+  onSurface: '#111827',
+  surfaceSecondary: '#F9FAFB',
+  onSurfaceSecondary: '#374151',
+  surfaceTertiary: '#F3F4F6',
+  onSurfaceTertiary: '#4B5563',
+  surfaceInverse: '#0F1014',
+  onSurfaceInverse: '#FFFFFF',
   brand: '#D4AF37',
-  brandPrimary: '#D4AF37',
-  onBrandPrimary: '#1A1500',
-  brandSecondary: '#B38F24',
-  brandTertiary: '#3D331A',
-  onBrandTertiary: '#F5E1A4',
+  brandPrimary: '#B38F24',
+  onBrandPrimary: '#FFFFFF',
+  brandSecondary: '#D4AF37',
+  brandTertiary: '#FDFBF4',
+  onBrandTertiary: '#B38F24',
   success: '#2E7D32',
   warning: '#F57C00',
   error: '#D32F2F',
-  border: '#2A2C35',
-  borderStrong: '#3D404D',
-  divider: '#1F212A',
-  muted: '#8B8F99',
+  border: '#E5E7EB',
+  borderStrong: '#D1D5DB',
+  divider: '#F3F4F6',
+  muted: '#6B7280',
 };
 
 export const spacing = {
@@ -41,11 +41,10 @@ export const radius = {
   pill: 999,
 };
 
-// Use system serif for display headings (elegant, no CDN needed)
-// and system sans for body text.
+// Use a clean, modern aesthetic for display and body text
 export const fonts = {
-  display: Platform.select({ ios: 'Georgia', android: 'serif', default: 'serif' }) as string,
-  displayItalic: Platform.select({ ios: 'Georgia-Italic', android: 'serif', default: 'serif' }) as string,
+  display: Platform.select({ ios: 'Avenir', android: 'sans-serif', default: 'sans-serif' }) as string,
+  displayItalic: Platform.select({ ios: 'Avenir-Oblique', android: 'sans-serif', default: 'sans-serif' }) as string,
   body: Platform.select({ ios: 'System', android: 'sans-serif', default: 'System' }) as string,
   bodyMedium: Platform.select({ ios: 'System', android: 'sans-serif-medium', default: 'System' }) as string,
 };
