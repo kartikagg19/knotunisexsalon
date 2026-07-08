@@ -1,27 +1,28 @@
 import { Platform } from 'react-native';
 
 export const colors = {
-  surface: '#FFFFFF',
-  onSurface: '#111827',
-  surfaceSecondary: '#F9FAFB',
-  onSurfaceSecondary: '#374151',
-  surfaceTertiary: '#F3F4F6',
-  onSurfaceTertiary: '#4B5563',
-  surfaceInverse: '#0F1014',
+  // Using RGBA colors to support glassmorphism layers beneath UI components
+  surface: 'rgba(255, 255, 255, 0.65)',
+  onSurface: '#1F1406',
+  surfaceSecondary: 'rgba(255, 248, 235, 0.5)', // warm gold tinted glass
+  onSurfaceSecondary: '#3E2A14',
+  surfaceTertiary: 'rgba(255, 255, 255, 0.8)',
+  onSurfaceTertiary: '#644723',
+  surfaceInverse: '#140c03',
   onSurfaceInverse: '#FFFFFF',
-  brand: '#D4AF37',
-  brandPrimary: '#B38F24',
+  brand: '#F9D423',
+  brandPrimary: '#F8C01B',
   onBrandPrimary: '#FFFFFF',
-  brandSecondary: '#D4AF37',
-  brandTertiary: '#FDFBF4',
-  onBrandTertiary: '#B38F24',
-  success: '#2E7D32',
-  warning: '#F57C00',
-  error: '#D32F2F',
-  border: '#E5E7EB',
-  borderStrong: '#D1D5DB',
-  divider: '#F3F4F6',
-  muted: '#6B7280',
+  brandSecondary: '#FF4E50', // energetic advanced coral/gold blend vibe
+  brandTertiary: '#FFF5E1',
+  onBrandTertiary: '#C29311',
+  success: '#10B981',
+  warning: '#F59E0B',
+  error: '#EF4444',
+  border: 'rgba(255, 255, 255, 0.55)',
+  borderStrong: 'rgba(255, 255, 255, 0.85)',
+  divider: 'rgba(0, 0, 0, 0.06)',
+  muted: '#8E7152',
 };
 
 export const spacing = {

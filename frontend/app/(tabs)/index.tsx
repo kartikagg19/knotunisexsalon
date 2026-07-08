@@ -13,6 +13,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import Animated, { useSharedValue, useAnimatedStyle, withRepeat, withTiming, Easing, withSequence } from 'react-native-reanimated';
 import { useRouter } from 'expo-router';
+import { BlurView } from 'expo-blur';
 
 const AnimatedImage = Animated.createAnimatedComponent(Image);
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -64,6 +65,11 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
+      <LinearGradient
+        colors={['#fff8eb', '#fdf3e2', '#f6e4c7', '#fff8eb']}
+        start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+        style={StyleSheet.absoluteFill}
+      />
       <ScrollView
         contentContainerStyle={{ paddingBottom: 120 }}
         showsVerticalScrollIndicator={false}
@@ -73,7 +79,7 @@ export default function HomeScreen() {
         <View style={styles.hero}>
           <AnimatedImage source={HERO_IMAGE} style={[styles.heroImg, animatedStyle]} contentFit="cover" transition={400} />
           <LinearGradient
-            colors={['rgba(255,255,255,0.1)', 'rgba(255,255,255,0.75)', colors.surface]}
+            colors={['rgba(255,248,235,0.1)', 'rgba(255,248,235,0.65)', '#fff8eb']}
             locations={[0, 0.45, 1]}
             style={StyleSheet.absoluteFill}
           />
@@ -287,8 +293,8 @@ function SectionTitle({ label, sub }: { label: string; sub: string }) {
 const HERO_H = 560;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.surface },
-  hero: { width, height: HERO_H, backgroundColor: colors.surfaceSecondary, overflow: 'hidden' },
+  container: { flex: 1, backgroundColor: '#fff8eb' },
+  hero: { width, height: HERO_H, backgroundColor: 'transparent', overflow: 'hidden' },
   heroImg: { ...StyleSheet.absoluteFillObject },
   heroHeader: {
     position: 'absolute',
@@ -325,8 +331,8 @@ const styles = StyleSheet.create({
     height: 42,
     borderRadius: 21,
     borderWidth: 1,
-    borderColor: colors.border,
-    backgroundColor: 'rgba(255,255,255,0.8)',
+    borderColor: 'rgba(255,255,255,0.8)',
+    backgroundColor: 'rgba(255,255,255,0.25)',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -419,7 +425,9 @@ const styles = StyleSheet.create({
     height: 110,
     borderRadius: radius.md,
     overflow: 'hidden',
-    backgroundColor: colors.surfaceSecondary,
+    backgroundColor: 'rgba(255,255,255,0.4)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.6)',
     flexShrink: 0,
   },
   catImg: { ...StyleSheet.absoluteFillObject },
@@ -494,11 +502,15 @@ const styles = StyleSheet.create({
   stylistTitle: { color: colors.muted, fontSize: 11, fontFamily: fonts.body, marginTop: 2 },
   reviewCard: {
     width: 280,
-    backgroundColor: colors.surfaceSecondary,
+    backgroundColor: 'rgba(255,255,255,0.45)',
     borderRadius: radius.lg,
     padding: spacing.lg,
     borderWidth: 1,
-    borderColor: colors.border,
+    borderColor: 'rgba(255,255,255,0.7)',
+    shadowColor: '#f9d423',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 10,
   },
   reviewHead: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, marginBottom: spacing.md },
   avatar: {
@@ -536,10 +548,14 @@ const styles = StyleSheet.create({
   visitWrap: {
     marginHorizontal: spacing.lg,
     padding: spacing.lg,
-    backgroundColor: colors.surfaceSecondary,
+    backgroundColor: 'rgba(255,255,255,0.45)',
     borderRadius: radius.lg,
     borderWidth: 1,
-    borderColor: colors.border,
+    borderColor: 'rgba(255,255,255,0.7)',
+    shadowColor: '#f9d423',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.12,
+    shadowRadius: 10,
   },
   infoRow: {
     flexDirection: 'row',
@@ -570,7 +586,9 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     borderRadius: radius.md,
     overflow: 'hidden',
-    backgroundColor: colors.surfaceSecondary,
+    backgroundColor: 'rgba(255,255,255,0.4)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.6)',
   },
   galleryImg: { width: '100%', height: '100%' },
   directionsBtn: {
