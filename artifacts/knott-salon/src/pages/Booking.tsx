@@ -2,7 +2,7 @@ import { useState } from "react";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import { motion } from "framer-motion";
-import { Calendar, Clock, User, Phone, Scissors } from "lucide-react";
+import { Calendar, Clock, User, Phone, Scissors, CheckCircle } from "lucide-react";
 
 export default function Booking() {
   const [formData, setFormData] = useState({
@@ -19,130 +19,123 @@ export default function Booking() {
     const text = `New Appointment Request%0A-------------------%0AName: ${formData.name}%0APhone: ${formData.phone}%0AService: ${formData.service}%0ADate: ${formData.date}%0ATime: ${formData.time}`;
     window.open(`https://wa.me/919716002672?text=${text}`, "_blank");
     setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 5000);
+    setTimeout(() => setIsSubmitted(false), 6000);
   };
 
-  const inputClasses = "w-full bg-[#111111] border-b border-white/20 px-0 py-4 text-white focus:outline-none focus:border-primary transition-colors font-light placeholder:text-muted-foreground/50";
-  const iconClasses = "absolute right-0 top-1/2 -translate-y-1/2 text-primary/50 w-5 h-5 pointer-events-none";
+  const inputBase = "w-full bg-transparent border-b-2 border-border px-0 py-4 text-foreground focus:outline-none focus:border-primary transition-colors font-light placeholder:text-muted-foreground/60 text-base";
+  const iconBase = "absolute right-0 top-1/2 -translate-y-1/2 text-primary/40 w-5 h-5 pointer-events-none";
 
   return (
-    <div className="min-h-screen bg-background flex flex-col pt-28">
+    <div className="min-h-screen bg-background flex flex-col pt-24 md:pt-28 pb-20 md:pb-0">
       <Navbar />
 
-      <div className="container mx-auto px-6 py-12 flex-1 flex items-center justify-center">
-        <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-5xl md:text-6xl font-serif mb-6 text-white leading-tight">
-              Reserve Your <br/><span className="text-primary italic">Experience</span>
-            </h1>
-            <p className="text-muted-foreground font-light text-lg mb-8 max-w-md leading-relaxed">
-              Complete the form to request an appointment. We will confirm your booking via WhatsApp shortly.
-            </p>
-            <div className="hidden lg:block relative w-full h-[400px]">
-              <img 
-                src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=900&q=85&auto=format&fit=crop" 
-                alt="Spa details" 
-                className="w-full h-full object-cover grayscale opacity-50"
-              />
-              <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />
-            </div>
-          </motion.div>
+      <div className="container mx-auto px-5 py-8 md:py-12 flex-1">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-10 md:mb-14"
+        >
+          <p className="text-primary text-xs tracking-[0.3em] uppercase mb-3">Reserve Your Spot</p>
+          <h1 className="text-4xl md:text-6xl font-serif text-foreground mb-3">
+            Book Appointment
+          </h1>
+          <p className="text-muted-foreground font-light text-sm max-w-sm mx-auto">
+            Fill in your details and we will confirm via WhatsApp shortly.
+          </p>
+        </motion.div>
 
+        <div className="w-full max-w-xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-[#0a0a0a] p-8 md:p-12 border border-white/10 relative"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="bg-card border border-border rounded-sm p-6 md:p-10 relative"
           >
-            {isSubmitted ? (
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0a0a0a] z-10 text-center p-8">
-                <div className="w-16 h-16 rounded-full border-2 border-primary flex items-center justify-center mb-6">
-                  <span className="text-primary text-2xl">✓</span>
-                </div>
-                <h3 className="text-2xl font-serif text-white mb-2">Request Sent</h3>
-                <p className="text-muted-foreground font-light">Redirecting to WhatsApp to complete your booking.</p>
+            {/* Success overlay */}
+            {isSubmitted && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-card z-10 text-center p-8 rounded-sm">
+                <CheckCircle className="text-primary w-14 h-14 mb-5" />
+                <h3 className="text-2xl font-serif text-foreground mb-2">Request Sent</h3>
+                <p className="text-muted-foreground font-light text-sm">Opening WhatsApp to complete your booking...</p>
               </div>
-            ) : null}
+            )}
 
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-7">
               <div className="relative">
-                <input 
-                  type="text" 
-                  required 
-                  placeholder="Full Name" 
-                  className={inputClasses}
+                <input
+                  type="text"
+                  required
+                  placeholder="Your Full Name"
+                  className={inputBase}
                   value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   data-testid="input-booking-name"
                 />
-                <User className={iconClasses} />
+                <User className={iconBase} />
               </div>
 
               <div className="relative">
-                <input 
-                  type="tel" 
-                  required 
-                  placeholder="Phone Number" 
-                  className={inputClasses}
+                <input
+                  type="tel"
+                  required
+                  placeholder="Phone Number"
+                  className={inputBase}
                   value={formData.phone}
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   data-testid="input-booking-phone"
                 />
-                <Phone className={iconClasses} />
+                <Phone className={iconBase} />
               </div>
 
               <div className="relative">
-                <select 
-                  required 
-                  className={`${inputClasses} appearance-none bg-transparent`}
+                <select
+                  required
+                  className={`${inputBase} appearance-none cursor-pointer`}
                   value={formData.service}
-                  onChange={(e) => setFormData({...formData, service: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                   data-testid="select-booking-service"
                 >
-                  <option value="" disabled className="bg-[#111111] text-muted-foreground">Select Service Category</option>
-                  <option value="Hair" className="bg-[#111111]">Hair</option>
-                  <option value="Facial & Cleanup" className="bg-[#111111]">Facial & Cleanup</option>
-                  <option value="Bridal & Makeup" className="bg-[#111111]">Bridal & Makeup</option>
-                  <option value="Nails" className="bg-[#111111]">Nails</option>
-                  <option value="Waxing & Threading" className="bg-[#111111]">Waxing & Threading</option>
-                  <option value="Other" className="bg-[#111111]">Other (Specify on WhatsApp)</option>
+                  <option value="" disabled>Select Service</option>
+                  <option value="Hair">Hair</option>
+                  <option value="Facial & Cleanup">Facial &amp; Cleanup</option>
+                  <option value="Bridal & Makeup">Bridal &amp; Makeup</option>
+                  <option value="Nails">Nails</option>
+                  <option value="Waxing & Threading">Waxing &amp; Threading</option>
+                  <option value="Mani & Pedi">Mani &amp; Pedi</option>
+                  <option value="Other">Other</option>
                 </select>
-                <Scissors className={iconClasses} />
+                <Scissors className={iconBase} />
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-5">
                 <div className="relative">
-                  <input 
-                    type="date" 
-                    required 
-                    className={`${inputClasses} [&::-webkit-calendar-picker-indicator]:opacity-0`}
+                  <input
+                    type="date"
+                    required
+                    className={`${inputBase} [&::-webkit-calendar-picker-indicator]:opacity-0`}
                     value={formData.date}
-                    onChange={(e) => setFormData({...formData, date: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                     data-testid="input-booking-date"
                   />
-                  <Calendar className={iconClasses} />
+                  <Calendar className={iconBase} />
                 </div>
                 <div className="relative">
-                  <input 
-                    type="time" 
-                    required 
-                    className={`${inputClasses} [&::-webkit-calendar-picker-indicator]:opacity-0`}
+                  <input
+                    type="time"
+                    required
+                    className={`${inputBase} [&::-webkit-calendar-picker-indicator]:opacity-0`}
                     value={formData.time}
-                    onChange={(e) => setFormData({...formData, time: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, time: e.target.value })}
                     data-testid="input-booking-time"
                   />
-                  <Clock className={iconClasses} />
+                  <Clock className={iconBase} />
                 </div>
               </div>
 
-              <button 
-                type="submit" 
-                className="w-full mt-4 py-5 bg-primary text-primary-foreground uppercase tracking-[0.2em] font-medium text-sm hover:bg-primary/90 transition-colors relative overflow-hidden group"
+              <button
+                type="submit"
+                className="w-full mt-2 py-4 md:py-5 bg-primary text-primary-foreground uppercase tracking-[0.2em] font-medium text-sm hover:bg-primary/90 transition-colors rounded-sm relative overflow-hidden group min-h-[52px]"
                 data-testid="button-booking-submit"
               >
                 <span className="relative z-10">Confirm via WhatsApp</span>
@@ -151,6 +144,13 @@ export default function Booking() {
             </form>
           </motion.div>
 
+          {/* Alternate: Direct call */}
+          <p className="text-center text-muted-foreground text-sm mt-6">
+            Prefer to call?{" "}
+            <a href="tel:+919716002672" className="text-primary hover:underline" data-testid="link-booking-call">
+              +91 97160 02672
+            </a>
+          </p>
         </div>
       </div>
 

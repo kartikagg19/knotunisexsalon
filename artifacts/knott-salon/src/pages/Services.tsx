@@ -85,47 +85,67 @@ const services = [
 
 export default function Services() {
   return (
-    <div className="min-h-screen bg-background flex flex-col pt-28">
+    <div className="min-h-screen bg-background flex flex-col pt-24 md:pt-28 pb-20 md:pb-0">
       <Navbar />
 
-      <div className="container mx-auto px-6 py-12 flex-1">
+      <div className="container mx-auto px-5 py-8 md:py-12 flex-1">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl mx-auto mb-20"
+          className="text-center max-w-3xl mx-auto mb-12 md:mb-20"
         >
-          <h1 className="text-5xl md:text-7xl font-serif mb-6 text-white">Our Menu</h1>
-          <p className="text-muted-foreground font-light text-lg">
+          <p className="text-primary text-xs tracking-[0.3em] uppercase mb-3">Full Menu</p>
+          <h1 className="text-4xl md:text-6xl font-serif mb-4 text-foreground">Our Services</h1>
+          <p className="text-muted-foreground font-light">
             A curated selection of premium treatments designed to elevate and transform.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 max-w-5xl mx-auto">
           {services.map((section, idx) => (
             <motion.div
               key={section.category}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="relative"
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.6, delay: (idx % 2) * 0.1 }}
             >
-              <h2 className="text-3xl font-serif italic text-primary mb-8 pb-4 border-b border-white/10">
+              <h2 className="text-2xl md:text-3xl font-serif italic text-primary mb-6 pb-3 border-b border-border">
                 {section.category}
               </h2>
               <ul className="space-y-4">
                 {section.items.map((item, i) => (
-                  <li key={i} className="flex justify-between items-baseline group">
-                    <span className="text-foreground/90 font-light text-lg group-hover:text-white transition-colors">{item.name}</span>
-                    <span className="mx-4 flex-1 border-b border-dotted border-white/20 relative top-[-6px]" />
-                    <span className="text-primary font-medium">{item.price}</span>
+                  <li key={i} className="flex justify-between items-baseline group min-h-[44px]">
+                    <span className="text-foreground/80 font-light text-sm md:text-base group-hover:text-foreground transition-colors pr-2">{item.name}</span>
+                    <span className="shrink-0 border-b border-dotted border-foreground/20 flex-1 mx-3 relative top-[-5px]" />
+                    <span className="text-primary font-medium text-sm shrink-0">{item.price}</span>
                   </li>
                 ))}
               </ul>
             </motion.div>
           ))}
         </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center mt-16 md:mt-20"
+        >
+          <p className="text-muted-foreground mb-5 text-sm">Ready to book a service?</p>
+          <a
+            href="https://wa.me/919716002672?text=New%20Appointment%20Request"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center px-10 py-4 bg-primary text-primary-foreground uppercase text-sm tracking-[0.2em] font-medium hover:bg-primary/90 transition-colors rounded-sm min-h-[52px]"
+            data-testid="link-services-booking"
+          >
+            Book via WhatsApp
+          </a>
+        </motion.div>
       </div>
 
       <Footer />

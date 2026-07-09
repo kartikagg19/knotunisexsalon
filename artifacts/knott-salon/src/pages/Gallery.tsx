@@ -19,42 +19,62 @@ const images = [
 
 export default function Gallery() {
   return (
-    <div className="min-h-screen bg-background flex flex-col pt-28">
+    <div className="min-h-screen bg-background flex flex-col pt-24 md:pt-28 pb-20 md:pb-0">
       <Navbar />
 
-      <div className="container mx-auto px-6 py-12 flex-1">
+      <div className="container mx-auto px-4 py-8 md:py-12 flex-1">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-10 md:mb-16"
         >
-          <h1 className="text-5xl md:text-7xl font-serif mb-6 text-white">Portfolio</h1>
-          <p className="text-muted-foreground font-light text-lg">
+          <p className="text-primary text-xs tracking-[0.3em] uppercase mb-3">Recent Work</p>
+          <h1 className="text-4xl md:text-6xl font-serif mb-4 text-foreground">Portfolio</h1>
+          <p className="text-muted-foreground font-light text-sm md:text-base">
             A glimpse into the artistry and transformations at KNOTT.
           </p>
         </motion.div>
 
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+        {/* Mobile: 2-col masonry · Desktop: 3-col masonry */}
+        <div className="columns-2 md:columns-3 gap-3 md:gap-5 space-y-3 md:space-y-5">
           {images.map((src, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "100px" }}
-              transition={{ duration: 0.5, delay: (idx % 3) * 0.1 }}
-              className="break-inside-avoid overflow-hidden bg-card relative group"
+              viewport={{ once: true, margin: "60px" }}
+              transition={{ duration: 0.5, delay: (idx % 3) * 0.08 }}
+              className="break-inside-avoid overflow-hidden bg-card relative group rounded-sm"
             >
-              <img 
-                src={src} 
-                alt={`Salon work ${idx + 1}`} 
-                className="w-full h-auto object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+              <img
+                src={src}
+                alt={`Salon work ${idx + 1}`}
+                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay pointer-events-none" />
+              <div className="absolute inset-0 bg-primary/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay pointer-events-none" />
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center mt-12 md:mt-16"
+        >
+          <a
+            href="https://www.instagram.com/himanshmakeovers"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-primary/40 text-primary uppercase text-xs tracking-[0.25em] hover:bg-primary hover:text-primary-foreground transition-all rounded-sm min-h-[52px]"
+            data-testid="link-gallery-instagram"
+          >
+            See More on Instagram
+          </a>
+        </motion.div>
       </div>
 
       <Footer />

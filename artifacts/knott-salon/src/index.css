@@ -50,41 +50,46 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-:root, .dark {
-  --background: 0 0% 4%; /* #0a0a0a */
-  --foreground: 40 58% 87%; /* #F5E6C8 */
+:root {
+  /* Light warm ivory theme */
+  --background: 40 50% 97%;      /* warm cream #faf7f2 */
+  --foreground: 30 30% 14%;      /* deep warm charcoal */
 
-  --border: 0 0% 15%; 
-  --card: 0 0% 7%; /* #111111 */
-  --card-foreground: 40 58% 87%; 
-  --card-border: 0 0% 12%; 
+  --border: 40 20% 86%;
+  --card: 38 35% 93%;            /* slightly deeper cream */
+  --card-foreground: 30 30% 14%;
+  --card-border: 40 20% 84%;
 
-  --popover: 0 0% 7%; 
-  --popover-foreground: 40 58% 87%; 
-  --popover-border: 0 0% 12%; 
+  --popover: 40 50% 97%;
+  --popover-foreground: 30 30% 14%;
+  --popover-border: 40 20% 84%;
 
-  --primary: 44 65% 52%; /* #D4AF37 */
-  --primary-foreground: 0 0% 4%; 
+  --primary: 44 72% 38%;         /* rich gold, deep enough for light bg */
+  --primary-foreground: 0 0% 100%;
+  --primary-border: hsl(44 72% 30%);
 
-  --secondary: 0 0% 10%; /* #1a1a1a */
-  --secondary-foreground: 40 58% 87%; 
+  --secondary: 40 28% 90%;
+  --secondary-foreground: 30 30% 14%;
+  --secondary-border: hsl(40 28% 82%);
 
-  --muted: 0 0% 10%;
-  --muted-foreground: 40 20% 60%;
+  --muted: 40 25% 91%;
+  --muted-foreground: 40 15% 42%;
+  --muted-border: hsl(40 25% 83%);
 
-  --accent: 44 65% 52%; 
-  --accent-foreground: 0 0% 4%; 
+  --accent: 44 72% 38%;
+  --accent-foreground: 0 0% 100%;
+  --accent-border: hsl(44 72% 30%);
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
+  --destructive-border: hsl(0 84% 52%);
 
-  --input: 0 0% 15%;
-  --ring: 44 65% 52%;
+  --input: 40 20% 83%;
+  --ring: 44 72% 38%;
 
   --app-font-sans: 'Inter', sans-serif;
   --app-font-serif: 'Playfair Display', serif;
   --app-font-mono: Menlo, monospace;
-  
   --radius: 0.5rem;
 }
 
@@ -103,28 +108,40 @@
 /* Custom Animations */
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    text-shadow: 0 0 20px rgba(180, 140, 30, 0.35);
   }
   .box-glow {
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
+    box-shadow: 0 0 30px rgba(180, 140, 30, 0.12);
   }
   .gold-gradient-text {
-    background: linear-gradient(135deg, #F5E6C8 0%, #D4AF37 50%, #B8860B 100%);
+    background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #C9980A 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  /* Used only on hero (dark photo background) */
+  .gold-gradient-text-light {
+    background: linear-gradient(135deg, #F5E6C8 0%, #D4AF37 50%, #e8c855 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   .animate-shimmer {
     background: linear-gradient(
       90deg,
       rgba(212, 175, 55, 0) 0%,
-      rgba(212, 175, 55, 0.2) 50%,
+      rgba(212, 175, 55, 0.25) 50%,
       rgba(212, 175, 55, 0) 100%
     );
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
   }
   .marquee-content {
-    animation: marquee 30s linear infinite;
+    animation: marquee 35s linear infinite;
+  }
+  /* Safe bottom padding for mobile bottom nav */
+  .pb-safe {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 4.5rem);
   }
 }
 
@@ -138,7 +155,18 @@
   100% { transform: translateX(-50%); }
 }
 
-/* Hide ugly search cancel button in Chrome until we can style it properly */
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Mobile touch targets */
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hide ugly search cancel button */
 input[type='search']::-webkit-search-cancel-button {
   display: none;
 }

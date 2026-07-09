@@ -4,48 +4,49 @@ import { FaWhatsapp } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#050505] border-t border-white/5 pt-20 pb-10">
+    <footer className="bg-[#1a1208] border-t border-white/5 pt-14 pb-6 hidden md:block">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
-            <Link href="/" className="inline-block mb-6" data-testid="link-footer-logo">
-              <span className="font-serif italic text-3xl tracking-widest text-primary text-glow">
+            <Link href="/" className="inline-block mb-4" data-testid="link-footer-logo">
+              <span className="font-serif italic text-3xl tracking-widest text-[#D4AF37] text-glow">
                 KNOTT
               </span>
+              <p className="text-[9px] text-white/40 tracking-[0.22em] uppercase mt-0.5">Unisex Salon &amp; Academy</p>
             </Link>
-            <p className="text-muted-foreground mb-6 font-light leading-relaxed">
-              Best Salon & Academy in Uttam Nagar, where ordinary people walk in and extraordinary transformations walk out.
+            <p className="text-white/40 mb-6 font-light leading-relaxed text-sm">
+              Nail, Makeup, Beauty, Skin, Hair &mdash; Luxury Salon in Uttam Nagar since 2021.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-3">
               <a
                 href="https://www.instagram.com/himanshmakeovers"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all duration-300"
+                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-[#D4AF37] hover:border-[#D4AF37]/40 transition-all duration-300"
                 data-testid="link-social-instagram"
               >
-                <Instagram size={18} />
+                <Instagram size={16} />
               </a>
               <a
                 href="https://wa.me/919716002672"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all duration-300"
+                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-green-400 hover:border-green-400/40 transition-all duration-300"
                 data-testid="link-social-whatsapp"
               >
-                <FaWhatsapp size={18} />
+                <FaWhatsapp size={16} />
               </a>
             </div>
           </div>
 
           <div>
-            <h4 className="text-lg font-serif italic text-white mb-6">Quick Links</h4>
-            <ul className="space-y-4">
+            <h4 className="text-sm font-serif italic text-white/70 mb-5 uppercase tracking-wider">Quick Links</h4>
+            <ul className="space-y-3">
               {["Home", "Services", "Gallery", "Contact", "Booking"].map((item) => (
                 <li key={item}>
                   <Link
                     href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm uppercase tracking-wider"
+                    className="text-white/40 hover:text-[#D4AF37] transition-colors text-sm"
                     data-testid={`link-footer-${item.toLowerCase()}`}
                   >
                     {item}
@@ -56,23 +57,23 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-serif italic text-white mb-6">Contact</h4>
+            <h4 className="text-sm font-serif italic text-white/70 mb-5 uppercase tracking-wider">Contact</h4>
             <ul className="space-y-4">
-              <li className="flex items-start text-muted-foreground">
-                <MapPin size={18} className="mr-3 mt-1 text-primary shrink-0" />
+              <li className="flex items-start text-white/40">
+                <MapPin size={16} className="mr-3 mt-0.5 text-[#D4AF37] shrink-0" />
                 <span className="font-light text-sm leading-relaxed">
-                  E-67, Arya Samaj Rd, near Muthoot Bank, Block J, Uttam Nagar, New Delhi, Delhi 110059
+                  E-67, Arya Samaj Rd, Block J, Uttam Nagar, New Delhi 110059
                 </span>
               </li>
-              <li className="flex items-center text-muted-foreground">
-                <Phone size={18} className="mr-3 text-primary shrink-0" />
-                <a href="tel:+919716002672" className="font-light text-sm hover:text-primary transition-colors" data-testid="link-footer-phone">
+              <li className="flex items-center text-white/40">
+                <Phone size={16} className="mr-3 text-[#D4AF37] shrink-0" />
+                <a href="tel:+919716002672" className="font-light text-sm hover:text-[#D4AF37] transition-colors" data-testid="link-footer-phone">
                   +91 97160 02672
                 </a>
               </li>
-              <li className="flex items-center text-muted-foreground">
-                <FaWhatsapp size={18} className="mr-3 text-primary shrink-0" />
-                <a href="https://wa.me/919716002672" target="_blank" rel="noreferrer" className="font-light text-sm hover:text-primary transition-colors" data-testid="link-footer-whatsapp-text">
+              <li className="flex items-center text-white/40">
+                <FaWhatsapp size={16} className="mr-3 text-[#D4AF37] shrink-0" />
+                <a href="https://wa.me/919716002672" target="_blank" rel="noreferrer" className="font-light text-sm hover:text-[#D4AF37] transition-colors" data-testid="link-footer-whatsapp-text">
                   WhatsApp Us
                 </a>
               </li>
@@ -80,22 +81,20 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-serif italic text-white mb-6">Hours</h4>
-            <ul className="space-y-4">
-              <li className="flex items-start text-muted-foreground">
-                <Clock size={18} className="mr-3 mt-1 text-primary shrink-0" />
-                <div>
-                  <p className="font-light text-sm">Monday – Sunday</p>
-                  <p className="font-medium text-white text-sm mt-1">10:30 AM – 9:00 PM</p>
-                </div>
-              </li>
-            </ul>
+            <h4 className="text-sm font-serif italic text-white/70 mb-5 uppercase tracking-wider">Hours</h4>
+            <div className="flex items-start text-white/40">
+              <Clock size={16} className="mr-3 mt-0.5 text-[#D4AF37] shrink-0" />
+              <div>
+                <p className="font-light text-sm">Monday – Sunday</p>
+                <p className="font-medium text-white/70 text-sm mt-1">10:30 AM – 9:00 PM</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-muted-foreground/50 tracking-wider">
-          <p>&copy; {new Date().getFullYear()} KNOTT Unisex Salon & Academy. All rights reserved.</p>
-          <p className="mt-2 md:mt-0">EST. 2021 • UTTAM NAGAR</p>
+        <div className="pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-white/20 tracking-wider">
+          <p>&copy; {new Date().getFullYear()} KNOTT Unisex Salon &amp; Academy. All rights reserved.</p>
+          <p className="mt-2 md:mt-0">EST. 2021 · UTTAM NAGAR, NEW DELHI</p>
         </div>
       </div>
     </footer>
