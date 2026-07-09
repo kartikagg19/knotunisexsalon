@@ -7,6 +7,8 @@ export default function Footer() {
     <footer className="bg-[#1a1208] border-t border-white/5 pt-14 pb-6 hidden md:block">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+          {/* Brand */}
           <div>
             <Link href="/" className="inline-block mb-4" data-testid="link-footer-logo">
               <span className="font-serif italic text-3xl tracking-widest text-[#D4956A] text-glow">
@@ -15,7 +17,7 @@ export default function Footer() {
               <p className="text-[9px] text-white/40 tracking-[0.22em] uppercase mt-0.5">Unisex Salon &amp; Academy</p>
             </Link>
             <p className="text-white/40 mb-6 font-light leading-relaxed text-sm">
-              Nail, Makeup, Beauty, Skin, Hair &mdash; Luxury Salon in Uttam Nagar since 2021.
+              Nail, Makeup, Beauty, Skin, Hair — Luxury Salon in Uttam Nagar since 2021.
             </p>
             <div className="flex space-x-3">
               <a
@@ -39,40 +41,47 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Quick Links — no Booking */}
           <div>
             <h4 className="text-sm font-serif italic text-white/70 mb-5 uppercase tracking-wider">Quick Links</h4>
             <ul className="space-y-3">
-              {["Home", "Services", "Gallery", "Contact", "Booking"].map((item) => (
-                <li key={item}>
+              {[
+                { label: "Home", href: "/" },
+                { label: "Services", href: "/services" },
+                { label: "Gallery", href: "/gallery" },
+                { label: "Contact", href: "/contact" },
+              ].map((item) => (
+                <li key={item.label}>
                   <Link
-                    href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                    href={item.href}
                     className="text-white/40 hover:text-[#D4956A] transition-colors text-sm"
-                    data-testid={`link-footer-${item.toLowerCase()}`}
+                    data-testid={`link-footer-${item.label.toLowerCase()}`}
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
+          {/* Contact */}
           <div>
             <h4 className="text-sm font-serif italic text-white/70 mb-5 uppercase tracking-wider">Contact</h4>
             <ul className="space-y-4">
               <li className="flex items-start text-white/40">
-                <MapPin size={16} className="mr-3 mt-0.5 text-[#D4956A] shrink-0" />
+                <MapPin size={15} className="mr-3 mt-0.5 text-[#D4956A] shrink-0" />
                 <span className="font-light text-sm leading-relaxed">
-                  E-67, Arya Samaj Rd, Block J, Uttam Nagar, New Delhi 110059
+                  E-67, Arya Samaj Rd, Block J,<br />Uttam Nagar, New Delhi 110059
                 </span>
               </li>
               <li className="flex items-center text-white/40">
-                <Phone size={16} className="mr-3 text-[#D4956A] shrink-0" />
+                <Phone size={15} className="mr-3 text-[#D4956A] shrink-0" />
                 <a href="tel:+919716002672" className="font-light text-sm hover:text-[#D4956A] transition-colors" data-testid="link-footer-phone">
                   +91 97160 02672
                 </a>
               </li>
               <li className="flex items-center text-white/40">
-                <FaWhatsapp size={16} className="mr-3 text-[#D4956A] shrink-0" />
+                <FaWhatsapp size={15} className="mr-3 text-[#D4956A] shrink-0" />
                 <a href="https://wa.me/919716002672" target="_blank" rel="noreferrer" className="font-light text-sm hover:text-[#D4956A] transition-colors" data-testid="link-footer-whatsapp-text">
                   WhatsApp Us
                 </a>
@@ -80,16 +89,18 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Hours */}
           <div>
             <h4 className="text-sm font-serif italic text-white/70 mb-5 uppercase tracking-wider">Hours</h4>
             <div className="flex items-start text-white/40">
-              <Clock size={16} className="mr-3 mt-0.5 text-[#D4956A] shrink-0" />
+              <Clock size={15} className="mr-3 mt-0.5 text-[#D4956A] shrink-0" />
               <div>
                 <p className="font-light text-sm">Monday – Sunday</p>
-                <p className="font-medium text-white/70 text-sm mt-1">10:30 AM – 9:00 PM</p>
+                <p className="font-semibold text-white/70 text-sm mt-1">10:30 AM – 9:00 PM</p>
               </div>
             </div>
           </div>
+
         </div>
 
         <div className="pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-white/20 tracking-wider">

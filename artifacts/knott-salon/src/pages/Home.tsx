@@ -244,26 +244,92 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── Footer CTA ─── */}
-      <section className="py-14 md:py-20 bg-background text-center px-5">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          <p className="text-primary tracking-[0.3em] uppercase text-xs mb-4">Ready for a change?</p>
-          <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-8 leading-snug">
-            Book Your Appointment Today
-          </h2>
-          <Link
-            href="/booking"
-            className="inline-flex items-center justify-center px-10 py-4 bg-primary text-primary-foreground uppercase text-sm tracking-[0.2em] font-medium hover:bg-primary/90 transition-colors rounded-sm min-h-[52px]"
-            data-testid="link-footer-cta-booking"
+      {/* ─── Location & Timing ─── */}
+      <section className="py-14 md:py-20 bg-background px-5">
+        <div className="container mx-auto max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="text-center mb-10"
           >
-            Book Now
-          </Link>
-        </motion.div>
+            <p className="text-primary tracking-[0.3em] uppercase text-xs mb-3">Visit Us</p>
+            <h2 className="font-serif text-3xl md:text-5xl text-foreground">Find Us</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Location card */}
+            <motion.a
+              href="https://maps.google.com/?q=E-67+Arya+Samaj+Rd+Uttam+Nagar+New+Delhi"
+              target="_blank"
+              rel="noreferrer"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="bg-card border border-border rounded-sm p-6 flex flex-col items-center text-center group hover:border-primary/40 transition-colors"
+              data-testid="link-home-location"
+            >
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <h3 className="font-serif text-lg text-foreground mb-2">Location</h3>
+              <p className="text-muted-foreground text-sm font-light leading-relaxed">
+                E-67, Arya Samaj Rd,<br />near Muthoot Bank, Block J,<br />Uttam Nagar, New Delhi 110059
+              </p>
+              <span className="mt-4 text-[10px] uppercase tracking-[0.2em] text-primary">Get Directions →</span>
+            </motion.a>
+
+            {/* Hours card */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.18 }}
+              className="bg-primary rounded-sm p-6 flex flex-col items-center text-center"
+            >
+              <div className="w-12 h-12 rounded-full bg-white/15 flex items-center justify-center text-primary-foreground mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <h3 className="font-serif text-lg text-primary-foreground mb-2">Open Daily</h3>
+              <p className="text-primary-foreground/75 text-sm font-light mb-1">Monday – Sunday</p>
+              <p className="text-primary-foreground text-xl font-serif font-semibold">10:30 AM – 9:00 PM</p>
+              <div className="mt-4 w-8 h-[1px] bg-primary-foreground/30" />
+              <p className="text-primary-foreground/60 text-xs mt-3 tracking-wide">No appointment needed · Walk-ins welcome</p>
+            </motion.div>
+
+            {/* Contact / Book card */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.26 }}
+              className="bg-card border border-border rounded-sm p-6 flex flex-col items-center text-center"
+            >
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.22a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <h3 className="font-serif text-lg text-foreground mb-2">Book Appointment</h3>
+              <a
+                href="tel:+919716002672"
+                className="text-foreground/75 text-sm font-light hover:text-primary transition-colors mb-1"
+                data-testid="link-home-call"
+              >
+                +91 97160 02672
+              </a>
+              <a
+                href="https://wa.me/919716002672?text=New%20Appointment%20Request"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 w-full py-3 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] font-medium rounded-sm hover:bg-primary/85 transition-colors min-h-[44px] flex items-center justify-center"
+                data-testid="link-home-whatsapp-book"
+              >
+                WhatsApp Us
+              </a>
+            </motion.div>
+          </div>
+        </div>
       </section>
 
       <Footer />
