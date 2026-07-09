@@ -1,6 +1,5 @@
 import { Link, useLocation } from "wouter";
 import { Home, Scissors, Image, Phone } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
 
 const navItems = [
   { name: "Home", href: "/", icon: Home },
@@ -36,18 +35,6 @@ export default function BottomNav() {
             </Link>
           );
         })}
-
-        {/* WhatsApp Book CTA */}
-        <a
-          href="https://wa.me/919716002672?text=New%20Appointment%20Request"
-          target="_blank"
-          rel="noreferrer"
-          className="flex-1 flex flex-col items-center justify-center py-2.5 gap-0.5 text-green-600 min-h-[56px] transition-opacity active:opacity-70"
-          data-testid="link-bottomnav-whatsapp"
-        >
-          <FaWhatsapp size={22} />
-          <span className="text-[9px] tracking-wider uppercase">Book</span>
-        </a>
       </div>
     </div>
   );

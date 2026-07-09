@@ -1,7 +1,8 @@
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { Link } from "wouter";
 import { useRef } from "react";
-import { Star, ChevronRight, Quote } from "lucide-react";
+import { Star, ChevronRight, Quote, Instagram } from "lucide-react";
+import { FaWhatsapp, FaFacebook } from "react-icons/fa";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 
@@ -109,27 +110,65 @@ export default function Home() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 2 }}
-            className="mt-7 flex flex-col sm:flex-row gap-3 justify-center"
+            className="mt-7 flex flex-col items-center gap-4"
           >
-            <Link
-              href="/booking"
-              className="group relative inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground uppercase text-sm tracking-[0.2em] font-medium overflow-hidden box-glow rounded-sm min-h-[52px]"
-              data-testid="link-hero-booking"
-            >
-              <span className="relative z-10 flex items-center">
-                Book Appointment <ChevronRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </span>
-              <div className="absolute inset-0 -translate-x-full group-hover:animate-shimmer z-0 bg-white/20" />
-            </Link>
-            <a
-              href="https://wa.me/919716002672"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white uppercase text-sm tracking-[0.2em] font-medium hover:border-white/60 transition-colors rounded-sm min-h-[52px]"
-              data-testid="link-hero-whatsapp"
-            >
-              WhatsApp Us
-            </a>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-center w-full max-w-xs sm:max-w-none">
+              <Link
+                href="/booking"
+                className="group relative inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground uppercase text-sm tracking-[0.2em] font-medium overflow-hidden box-glow rounded-sm min-h-[52px]"
+                data-testid="link-hero-booking"
+              >
+                <span className="relative z-10 flex items-center">
+                  Book Appointment <ChevronRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 -translate-x-full group-hover:animate-shimmer z-0 bg-white/20" />
+              </Link>
+              <a
+                href="https://wa.me/919716002672"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white uppercase text-sm tracking-[0.2em] font-medium hover:border-white/60 transition-colors rounded-sm min-h-[52px]"
+                data-testid="link-hero-whatsapp"
+              >
+                WhatsApp Us
+              </a>
+            </div>
+
+            {/* Social Media Icons */}
+            <div className="flex items-center gap-3 mt-1">
+              <span className="text-white/30 text-[9px] tracking-[0.25em] uppercase mr-1">Follow Us</span>
+              <a
+                href="https://www.instagram.com/himanshmakeovers"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+                data-testid="link-hero-instagram"
+                className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-pink-400 hover:border-pink-400/50 transition-all duration-300 active:scale-95"
+              >
+                <Instagram size={16} />
+              </a>
+              <a
+                href="https://wa.me/919716002672"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="WhatsApp"
+                data-testid="link-hero-social-whatsapp"
+                className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-green-400 hover:border-green-400/50 transition-all duration-300 active:scale-95"
+              >
+                <FaWhatsapp size={16} />
+              </a>
+              <a
+                href="https://www.facebook.com/knott.salon"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+                data-testid="link-hero-facebook"
+                className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-blue-400 hover:border-blue-400/50 transition-all duration-300 active:scale-95"
+              >
+                <FaFacebook size={16} />
+              </a>
+            </div>
           </motion.div>
         </div>
 
