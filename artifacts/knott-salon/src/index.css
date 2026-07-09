@@ -51,122 +51,118 @@
 }
 
 :root {
-  /* Light warm ivory theme */
-  --background: 40 50% 97%;      /* warm cream #faf7f2 */
-  --foreground: 30 30% 14%;      /* deep warm charcoal */
+  /* ── Warm ivory base ── */
+  --background: 38 45% 97%;        /* warm ivory #FAF8F4 */
+  --foreground: 22 35% 13%;        /* deep espresso brown */
 
-  --border: 40 20% 86%;
-  --card: 38 35% 93%;            /* slightly deeper cream */
-  --card-foreground: 30 30% 14%;
-  --card-border: 40 20% 84%;
+  --border: 35 18% 86%;
+  --card: 36 32% 93%;              /* slightly tinted ivory card */
+  --card-foreground: 22 35% 13%;
+  --card-border: 35 18% 83%;
 
-  --popover: 40 50% 97%;
-  --popover-foreground: 30 30% 14%;
-  --popover-border: 40 20% 84%;
+  --popover: 38 45% 97%;
+  --popover-foreground: 22 35% 13%;
+  --popover-border: 35 18% 83%;
 
-  --primary: 44 72% 38%;         /* rich gold, deep enough for light bg */
-  --primary-foreground: 0 0% 100%;
-  --primary-border: hsl(44 72% 30%);
+  /* ── Primary: warm cognac/copper — NOT yellow gold ── */
+  --primary: 20 52% 40%;           /* rich terracotta-cognac #9B5430 */
+  --primary-foreground: 38 40% 97%;
+  --primary-border: hsl(20 52% 32%);
 
-  --secondary: 40 28% 90%;
-  --secondary-foreground: 30 30% 14%;
-  --secondary-border: hsl(40 28% 82%);
+  --secondary: 36 28% 90%;
+  --secondary-foreground: 22 35% 13%;
+  --secondary-border: hsl(36 28% 82%);
 
-  --muted: 40 25% 91%;
-  --muted-foreground: 40 15% 42%;
-  --muted-border: hsl(40 25% 83%);
+  --muted: 36 22% 91%;
+  --muted-foreground: 30 14% 44%;
+  --muted-border: hsl(36 22% 83%);
 
-  --accent: 44 72% 38%;
-  --accent-foreground: 0 0% 100%;
-  --accent-border: hsl(44 72% 30%);
+  --accent: 20 52% 40%;
+  --accent-foreground: 38 40% 97%;
+  --accent-border: hsl(20 52% 32%);
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
   --destructive-border: hsl(0 84% 52%);
 
-  --input: 40 20% 83%;
-  --ring: 44 72% 38%;
+  --input: 35 18% 83%;
+  --ring: 20 52% 40%;
 
   --app-font-sans: 'Inter', sans-serif;
   --app-font-serif: 'Playfair Display', serif;
   --app-font-mono: Menlo, monospace;
-  --radius: 0.5rem;
+  --radius: 0.4rem;
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply font-sans antialiased bg-background text-foreground;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-normal;
-  }
+  * { @apply border-border; }
+  body { @apply font-sans antialiased bg-background text-foreground; }
+  h1, h2, h3, h4, h5, h6 { @apply font-serif font-normal; }
 }
 
-/* Custom Animations */
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 20px rgba(180, 140, 30, 0.35);
+    text-shadow: 0 0 28px rgba(155, 84, 48, 0.3);
   }
   .box-glow {
-    box-shadow: 0 0 30px rgba(180, 140, 30, 0.12);
+    box-shadow: 0 0 30px rgba(155, 84, 48, 0.14);
   }
+
+  /* Cognac gradient — used on light sections */
+  .cognac-gradient-text {
+    background: linear-gradient(135deg, #7A3E20 0%, #B8622A 45%, #8C4822 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Champagne gradient — hero text on dark overlay */
+  .hero-gradient-text {
+    background: linear-gradient(135deg, #F2DBC4 0%, #E8C09A 50%, #D4956A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Keep for backward compat — duplicate the gradient directly */
   .gold-gradient-text {
-    background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #C9980A 100%);
+    background: linear-gradient(135deg, #7A3E20 0%, #B8622A 45%, #8C4822 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  /* Used only on hero (dark photo background) */
   .gold-gradient-text-light {
-    background: linear-gradient(135deg, #F5E6C8 0%, #D4AF37 50%, #e8c855 100%);
+    background: linear-gradient(135deg, #F2DBC4 0%, #E8C09A 50%, #D4956A 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
   .animate-shimmer {
     background: linear-gradient(
       90deg,
-      rgba(212, 175, 55, 0) 0%,
-      rgba(212, 175, 55, 0.25) 50%,
-      rgba(212, 175, 55, 0) 100%
+      rgba(184,98,42,0) 0%,
+      rgba(184,98,42,0.22) 50%,
+      rgba(184,98,42,0) 100%
     );
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
   }
-  .marquee-content {
-    animation: marquee 35s linear infinite;
-  }
-  /* Safe bottom padding for mobile bottom nav */
-  .pb-safe {
-    padding-bottom: calc(env(safe-area-inset-bottom) + 4.5rem);
-  }
+  .marquee-content { animation: marquee 35s linear infinite; }
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
 }
-
 @keyframes marquee {
-  0% { transform: translateX(0%); }
+  0%   { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
 }
-
-/* Mobile touch targets */
-button, a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* Hide ugly search cancel button */
-input[type='search']::-webkit-search-cancel-button {
-  display: none;
-}
+button, a { -webkit-tap-highlight-color: transparent; }
+input[type='search']::-webkit-search-cancel-button { display: none; }

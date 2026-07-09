@@ -40,7 +40,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/55 z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
           <img
-            src="https://images.unsplash.com/photo-1675034743339-0b0747047727?w=1600&q=85&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1600&q=85&auto=format&fit=crop"
             alt="KNOTT Unisex Salon"
             className="w-full h-[120%] object-cover object-center -top-[10%] relative"
           />
@@ -48,8 +48,8 @@ export default function Home() {
 
         {/* Floating Gold Orbs */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[15%] left-[10%] w-72 h-72 md:w-96 md:h-96 bg-amber-400/15 rounded-full blur-[100px] animate-pulse" />
-          <div className="absolute bottom-[15%] right-[5%] w-80 h-80 md:w-[420px] md:h-[420px] bg-yellow-600/10 rounded-full blur-[130px]" />
+          <div className="absolute top-[15%] left-[10%] w-72 h-72 md:w-96 md:h-96 bg-orange-300/10 rounded-full blur-[100px] animate-pulse" />
+          <div className="absolute bottom-[15%] right-[5%] w-80 h-80 md:w-[420px] md:h-[420px] bg-rose-900/10 rounded-full blur-[130px]" />
         </div>
 
         {/* Hero Content */}
@@ -58,7 +58,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.4 }}
-            className="text-[#D4AF37] text-xs md:text-sm tracking-[0.3em] uppercase mb-5 font-light"
+            className="text-[#D4956A] text-xs md:text-sm tracking-[0.3em] uppercase mb-5 font-light"
           >
             Uttam Nagar, New Delhi · Est. 2021
           </motion.div>
@@ -72,7 +72,7 @@ export default function Home() {
                   initial={{ y: "110%", opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.75, delay: 0.7 + i * 0.12, ease: [0.33, 1, 0.68, 1] }}
-                  className="inline-block gold-gradient-text-light text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
+                  className="inline-block hero-gradient-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
                 >
                   {word}
                 </motion.span>
@@ -85,7 +85,7 @@ export default function Home() {
                   initial={{ y: "110%", opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.75, delay: 1.1 + i * 0.1, ease: [0.33, 1, 0.68, 1] }}
-                  className={`inline-block text-4xl sm:text-5xl md:text-6xl lg:text-7xl ${word === "|" ? "text-[#D4AF37]/60" : "text-white italic"}`}
+                  className={`inline-block text-4xl sm:text-5xl md:text-6xl lg:text-7xl ${word === "|" ? "text-[#D4956A]/60" : "text-white italic"}`}
                 >
                   {word}
                 </motion.span>
@@ -99,8 +99,8 @@ export default function Home() {
             transition={{ duration: 1, delay: 1.8 }}
             className="mt-3 mb-4"
           >
-            <div className="flex justify-center items-center gap-1 text-[#D4AF37]">
-              {[1,2,3,4,5].map(s => <Star key={s} size={13} className="fill-[#D4AF37]" />)}
+            <div className="flex justify-center items-center gap-1 text-[#D4956A]">
+              {[1,2,3,4,5].map(s => <Star key={s} size={13} className="fill-[#D4956A]" />)}
               <span className="text-white/70 text-xs ml-2 tracking-wide">4.9 · 67 Reviews</span>
             </div>
           </motion.div>

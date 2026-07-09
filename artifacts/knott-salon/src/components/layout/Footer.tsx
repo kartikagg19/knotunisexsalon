@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
             <Link href="/" className="inline-block mb-4" data-testid="link-footer-logo">
-              <span className="font-serif italic text-3xl tracking-widest text-[#D4AF37] text-glow">
+              <span className="font-serif italic text-3xl tracking-widest text-[#D4956A] text-glow">
                 KNOTT
               </span>
               <p className="text-[9px] text-white/40 tracking-[0.22em] uppercase mt-0.5">Unisex Salon &amp; Academy</p>
@@ -22,7 +22,7 @@ export default function Footer() {
                 href="https://www.instagram.com/himanshmakeovers"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-[#D4AF37] hover:border-[#D4AF37]/40 transition-all duration-300"
+                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-[#D4956A] hover:border-[#D4956A]/40 transition-all duration-300"
                 data-testid="link-social-instagram"
               >
                 <Instagram size={16} />
@@ -46,7 +46,7 @@ export default function Footer() {
                 <li key={item}>
                   <Link
                     href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                    className="text-white/40 hover:text-[#D4AF37] transition-colors text-sm"
+                    className="text-white/40 hover:text-[#D4956A] transition-colors text-sm"
                     data-testid={`link-footer-${item.toLowerCase()}`}
                   >
                     {item}
@@ -60,20 +60,20 @@ export default function Footer() {
             <h4 className="text-sm font-serif italic text-white/70 mb-5 uppercase tracking-wider">Contact</h4>
             <ul className="space-y-4">
               <li className="flex items-start text-white/40">
-                <MapPin size={16} className="mr-3 mt-0.5 text-[#D4AF37] shrink-0" />
+                <MapPin size={16} className="mr-3 mt-0.5 text-[#D4956A] shrink-0" />
                 <span className="font-light text-sm leading-relaxed">
                   E-67, Arya Samaj Rd, Block J, Uttam Nagar, New Delhi 110059
                 </span>
               </li>
               <li className="flex items-center text-white/40">
-                <Phone size={16} className="mr-3 text-[#D4AF37] shrink-0" />
-                <a href="tel:+919716002672" className="font-light text-sm hover:text-[#D4AF37] transition-colors" data-testid="link-footer-phone">
+                <Phone size={16} className="mr-3 text-[#D4956A] shrink-0" />
+                <a href="tel:+919716002672" className="font-light text-sm hover:text-[#D4956A] transition-colors" data-testid="link-footer-phone">
                   +91 97160 02672
                 </a>
               </li>
               <li className="flex items-center text-white/40">
-                <FaWhatsapp size={16} className="mr-3 text-[#D4AF37] shrink-0" />
-                <a href="https://wa.me/919716002672" target="_blank" rel="noreferrer" className="font-light text-sm hover:text-[#D4AF37] transition-colors" data-testid="link-footer-whatsapp-text">
+                <FaWhatsapp size={16} className="mr-3 text-[#D4956A] shrink-0" />
+                <a href="https://wa.me/919716002672" target="_blank" rel="noreferrer" className="font-light text-sm hover:text-[#D4956A] transition-colors" data-testid="link-footer-whatsapp-text">
                   WhatsApp Us
                 </a>
               </li>
@@ -83,7 +83,7 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-serif italic text-white/70 mb-5 uppercase tracking-wider">Hours</h4>
             <div className="flex items-start text-white/40">
-              <Clock size={16} className="mr-3 mt-0.5 text-[#D4AF37] shrink-0" />
+              <Clock size={16} className="mr-3 mt-0.5 text-[#D4956A] shrink-0" />
               <div>
                 <p className="font-light text-sm">Monday – Sunday</p>
                 <p className="font-medium text-white/70 text-sm mt-1">10:30 AM – 9:00 PM</p>
