@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { Link } from "wouter";
-import { useRef } from "react";
-import { Star, ChevronRight, Quote, Phone } from "lucide-react";
+import { useRef, useState } from "react";
+import { Star, ChevronRight, Quote, Phone, Calendar, Clock, User, Scissors, CheckCircle } from "lucide-react";
 import { FaInstagram } from "react-icons/fa";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
@@ -213,7 +213,7 @@ export default function Home() {
       <section className="bg-primary py-5 px-5">
         <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="text-primary-foreground">
-            <p className="text-xs tracking-[0.2em] uppercase opacity-75">Open Daily</p>
+            <p className="text-xs tracking-[0.2em] uppercase opacity-75">Mon – Sun</p>
             <p className="font-serif text-lg font-medium">10:30 AM – 9:00 PM</p>
           </div>
           <div className="hidden sm:block w-px h-10 bg-white/20" />
@@ -312,7 +312,7 @@ export default function Home() {
               <div className="w-12 h-12 rounded-full bg-white/15 flex items-center justify-center text-primary-foreground mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               </div>
-              <h3 className="font-serif text-lg text-primary-foreground mb-2">Open Daily</h3>
+              <h3 className="font-serif text-lg text-primary-foreground mb-2">Working Hours</h3>
               <p className="text-primary-foreground/75 text-sm font-light mb-1">Monday – Sunday</p>
               <p className="text-primary-foreground text-xl font-serif font-semibold">10:30 AM – 9:00 PM</p>
               <div className="mt-4 w-8 h-[1px] bg-primary-foreground/30" />
@@ -328,31 +328,126 @@ export default function Home() {
               className="bg-card border border-border rounded-sm p-6 flex flex-col items-center text-center"
             >
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.22a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
               </div>
               <h3 className="font-serif text-lg text-foreground mb-2">Book Appointment</h3>
-              <a
-                href="tel:+919716002672"
-                className="text-foreground/75 text-sm font-light hover:text-primary transition-colors mb-1"
-                data-testid="link-home-call"
+              <p className="text-muted-foreground text-sm font-light mb-4">
+                Reserve your slot in seconds
+              </p>
+              <Link
+                href="/booking"
+                className="mt-auto w-full py-3 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] font-medium rounded-sm hover:bg-primary/85 transition-colors min-h-[44px] flex items-center justify-center"
+                data-testid="link-home-book-slot"
               >
-                +91 97160 02672
-              </a>
-              <a
-                href="https://wa.me/919716002672?text=New%20Appointment%20Request"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-4 w-full py-3 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] font-medium rounded-sm hover:bg-primary/85 transition-colors min-h-[44px] flex items-center justify-center"
-                data-testid="link-home-whatsapp-book"
-              >
-                WhatsApp Us
-              </a>
+                Book Your Slot →
+              </Link>
             </motion.div>
           </div>
         </div>
       </section>
 
+      {/* ─── Inline Booking Form ─── */}
+      <section className="py-14 md:py-20 bg-card border-t border-border px-5" id="book">
+        <div className="container mx-auto max-w-xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="text-center mb-10"
+          >
+            <p className="text-primary tracking-[0.3em] uppercase text-xs mb-3">Reserve Your Spot</p>
+            <h2 className="font-serif text-3xl md:text-5xl text-foreground">Book Your Slot</h2>
+            <p className="text-muted-foreground font-light text-sm mt-3">Fill in your details — we'll confirm via WhatsApp.</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            <HomeBookingForm />
+          </motion.div>
+        </div>
+      </section>
+
       <Footer />
+    </div>
+  );
+}
+
+function HomeBookingForm() {
+  const [formData, setFormData] = useState({ name: "", phone: "", service: "", date: "", time: "" });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const text = `New Appointment Request%0A-------------------%0AName: ${formData.name}%0APhone: ${formData.phone}%0AService: ${formData.service}%0ADate: ${formData.date}%0ATime: ${formData.time}`;
+    window.open(`https://wa.me/919716002672?text=${text}`, "_blank");
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 6000);
+  };
+
+  const inputBase = "w-full bg-transparent border-b-2 border-border px-0 py-4 text-foreground focus:outline-none focus:border-primary transition-colors font-light placeholder:text-muted-foreground/60 text-base";
+  const iconBase = "absolute right-0 top-1/2 -translate-y-1/2 text-primary/40 w-5 h-5 pointer-events-none";
+
+  return (
+    <div className="bg-background border border-border rounded-sm p-6 md:p-10 relative">
+      {submitted && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-background z-10 text-center p-8 rounded-sm">
+          <CheckCircle className="text-primary w-14 h-14 mb-5" />
+          <h3 className="text-2xl font-serif text-foreground mb-2">Request Sent!</h3>
+          <p className="text-muted-foreground font-light text-sm">Opening WhatsApp to confirm your booking…</p>
+        </div>
+      )}
+      <form onSubmit={handleSubmit} className="space-y-7">
+        <div className="relative">
+          <input type="text" required placeholder="Your Full Name" className={inputBase}
+            value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} />
+          <User className={iconBase} />
+        </div>
+        <div className="relative">
+          <input type="tel" required placeholder="Phone Number" className={inputBase}
+            value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} />
+          <Phone className={iconBase} />
+        </div>
+        <div className="relative">
+          <select required className={`${inputBase} appearance-none cursor-pointer`}
+            value={formData.service} onChange={e => setFormData({ ...formData, service: e.target.value })}>
+            <option value="" disabled>Select Service</option>
+            <option value="Hair">Hair</option>
+            <option value="Facial & Cleanup">Facial &amp; Cleanup</option>
+            <option value="Bridal & Makeup">Bridal &amp; Makeup</option>
+            <option value="Nails">Nails</option>
+            <option value="Waxing & Threading">Waxing &amp; Threading</option>
+            <option value="Mani & Pedi">Mani &amp; Pedi</option>
+            <option value="Other">Other</option>
+          </select>
+          <Scissors className={iconBase} />
+        </div>
+        <div className="grid grid-cols-2 gap-5">
+          <div className="relative">
+            <input type="date" required className={`${inputBase} [&::-webkit-calendar-picker-indicator]:opacity-0`}
+              value={formData.date} onChange={e => setFormData({ ...formData, date: e.target.value })} />
+            <Calendar className={iconBase} />
+          </div>
+          <div className="relative">
+            <input type="time" required className={`${inputBase} [&::-webkit-calendar-picker-indicator]:opacity-0`}
+              value={formData.time} onChange={e => setFormData({ ...formData, time: e.target.value })} />
+            <Clock className={iconBase} />
+          </div>
+        </div>
+        <button type="submit"
+          className="w-full mt-2 py-4 bg-primary text-primary-foreground uppercase tracking-[0.2em] font-medium text-sm hover:bg-primary/90 transition-colors rounded-sm relative overflow-hidden group min-h-[52px]">
+          <span className="relative z-10">Confirm via WhatsApp</span>
+          <div className="absolute inset-0 -translate-x-full group-hover:animate-shimmer z-0 bg-white/20" />
+        </button>
+      </form>
+      <p className="text-center text-muted-foreground text-sm mt-6">
+        Prefer to call?{" "}
+        <a href="tel:+919716002672" className="text-primary hover:underline">+91 97160 02672</a>
+      </p>
     </div>
   );
 }
