@@ -2,6 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "buildCommand": "pnpm --filter @workspace/knott-salon build",
-  "outputDirectory": "artifacts/knott-salon/dist",
+  "outputDirectory": "artifacts/knott-salon/dist/public",
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
