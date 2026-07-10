@@ -1,0 +1,209 @@
+{
+  "app_name": "Knott Unisex Salon",
+  "personality": "6 Glass / Luxe DARK",
+  "personality_one_liner": "A cinematic, expensive, and moody luxury salon experience relying on translucent glass, deep slate, and antique gold accents.",
+  "color": {
+    "surface": "#0F1014",
+    "onSurface": "#FFFFFF",
+    "surfaceSecondary": "#1A1C23",
+    "onSurfaceSecondary": "#EAEBEE",
+    "surfaceTertiary": "#262933",
+    "onSurfaceTertiary": "#D1D3D9",
+    "surfaceInverse": "#FFFFFF",
+    "onSurfaceInverse": "#0F1014",
+    "brand": "#D4AF37",
+    "brandPrimary": "#D4AF37",
+    "onBrandPrimary": "#1A1500",
+    "brandSecondary": "#B38F24",
+    "onBrandSecondary": "#FFFFFF",
+    "brandTertiary": "#3D331A",
+    "onBrandTertiary": "#F5E1A4",
+    "success": "#2E7D32",
+    "onSuccess": "#FFFFFF",
+    "warning": "#F57C00",
+    "onWarning": "#FFFFFF",
+    "error": "#D32F2F",
+    "onError": "#FFFFFF",
+    "info": "#455A64",
+    "onInfo": "#FFFFFF",
+    "border": "#2A2C35",
+    "borderStrong": "#3D404D",
+    "divider": "#1F212A"
+  },
+  "typography": {
+    "displayFontFamily": "Cormorant Garamond",
+    "textFontFamily": "Manrope",
+    "scale": {
+      "sm": 12,
+      "base": 14,
+      "lg": 16,
+      "xl": 20,
+      "2xl": 24,
+      "3xl": 32
+    }
+  },
+  "spacing": {
+    "rule": "Generous magazine-like rhythms, comfortable vertical space. Do not cram elements together. Maintain thumb-zone reachability for primary CTAs.",
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 24,
+    "2xl": 32,
+    "3xl": 48
+  },
+  "radius_tokens": {
+    "sm": 6,
+    "md": 12,
+    "lg": 20,
+    "pill": 999
+  },
+  "shadow_tier": "0",
+  "navigation": "bottom_tabs",
+  "icon_set": "Ionicons",
+  "glassmorphism": {
+    "enabled": true,
+    "do's": [
+      "Use blur/glass for bottom tab bar, sticky headers over scrolling content, floating action buttons, and featured hero cards.",
+      "Always pair blur with a translucent tinted base underneath (≥75% opacity of surface in dark mode) to ensure foreground text remains readable."
+    ],
+    "dont's": [
+      "Do not blur form fields, body text regions, or the entire screen.",
+      "Do not apply glass to dense lists or generic list rows."
+    ]
+  },
+  "platform_libraries": {
+    "glass": {
+      "ios": "expo-glass-effect",
+      "android": "expo-blur",
+      "low_end_android_fallback": "solid surfaceSecondary"
+    },
+    "image": "expo-image",
+    "blur": "expo-blur",
+    "bottom_sheet": "@gorhom/bottom-sheet",
+    "animation": "react-native-reanimated",
+    "gesture": "react-native-gesture-handler"
+  },
+  "haptics": {
+    "events": {
+      "tab_press": "selection",
+      "button_primary_press": "impactLight",
+      "appointment_booked": "notificationSuccess",
+      "time_slot_selected": "selection"
+    }
+  },
+  "screens": [
+    {
+      "name": "Home",
+      "purpose": "A cinematic welcome introducing the luxury salon, featured services, and top stylists.",
+      "states": {
+        "loading": "Centered minimalist spinner with 'Curating your experience...'",
+        "empty": "Not applicable for Home",
+        "error": "Message: 'Unable to load salon details' with a 'Retry' button."
+      },
+      "layout": "Screen root uses safe area. Top: Minimalist header with 'Knott Unisex Salon' wordmark in Cormorant Garamond. Below: Full-bleed Hero image card (using 'hero_home' image) overlaid with a top-to-bottom dark gradient scrim and a primary CTA ('Book Appointment'). Below hero: 'Signature Services' horizontally scrollable glass cards. Further down: 'Meet the Experts' (stylists) using elegant rounded avatars. Bottom tab bar is a frosted glass overlay."
+    },
+    {
+      "name": "Service Catalog",
+      "purpose": "Categorized listing of all services (Hair, Nails, Makeup, Waxing) with starting prices.",
+      "states": {
+        "loading": "Skeleton rows fading gracefully.",
+        "empty": "Illustration of salon tools + 'No services found.'",
+        "error": "Readable error message + Retry."
+      },
+      "layout": "Sticky glass header with a segmented control or horizontal pill list for categories (Hair, Nails, Skin). Below: Vertical list of services. Each item has a title, description snippet, price, and a tinted icon container. Images only used for featured category headers (e.g., 'service_nails' for Nails header)."
+    },
+    {
+      "name": "Service Detail",
+      "purpose": "Deep dive into a specific service, pricing tiers, and direct booking entry.",
+      "states": {
+        "loading": "Spinner.",
+        "empty": "N/A",
+        "error": "Error loading service info."
+      },
+      "layout": "Cinematic full-bleed image at the top (e.g., 'service_makeup') layered with a dark gradient scrim. The content below slides up over the image. Includes Service Title, Time duration, Detailed description, and pricing tiers (e.g., Junior Stylist vs Senior Director). A fixed container at the bottom holds the 'Book Now' primary CTA button, anchored above the safe area."
+    },
+    {
+      "name": "Booking Flow",
+      "purpose": "Step-by-step local state flow to schedule an appointment.",
+      "states": {
+        "loading": "Processing state over the button.",
+        "empty": "N/A",
+        "error": "Validation error text below inputs."
+      },
+      "layout": "Progress indicator at the top. Step 1: Date & Time selection (Custom horizontal date picker + grid of time slots). Step 2: Stylist selection (List of stylists with real photos). Step 3: Confirmation summary. Step 4: Success screen with 'appointment_booked' haptic and animated confirmation. Kept local only."
+    },
+    {
+      "name": "Stylists & Team",
+      "purpose": "Profiles of the salon's top talent and specialists.",
+      "states": {
+        "loading": "Skeleton grids.",
+        "empty": "No stylists available.",
+        "error": "Failed to load team."
+      },
+      "layout": "2-column grid layout wrapped with `space-between` and `gap`. Each card has a stylist photo, name, and specialty (e.g., 'Master Colorist')."
+    },
+    {
+      "name": "Academy",
+      "purpose": "Information about Knott's Beauty Academy and courses.",
+      "states": {
+        "loading": "Spinner.",
+        "empty": "No upcoming courses.",
+        "error": "Error loading courses."
+      },
+      "layout": "Hero image ('academy_training') with bold serif title 'Knott Academy'. List of courses (Makeup Artistry, Hair Styling) on dark lifted slate cards (`surfaceSecondary`) with duration and 'Enroll' buttons."
+    },
+    {
+      "name": "Profile & My Bookings",
+      "purpose": "User's local bookings and personal details.",
+      "states": {
+        "loading": "Spinner.",
+        "empty": "Clean illustration + 'No upcoming appointments.'",
+        "error": "Error loading profile."
+      },
+      "layout": "Minimalist header. User's initials in a `brandTertiary` circle avatar. A section for 'Upcoming Appointments' formatted as glass cards showing date, time, and service."
+    },
+    {
+      "name": "Contact",
+      "purpose": "Location, hours, and direct contact buttons.",
+      "states": {
+        "loading": "Spinner.",
+        "empty": "N/A",
+        "error": "N/A"
+      },
+      "layout": "Dark map graphic placeholder. Address text ('E-67, Arya Samaj Rd, Uttam Nagar'). Large tactile buttons for 'Call 085060 31314', 'WhatsApp', and 'Get Directions'."
+    }
+  ],
+  "images": {
+    "hero_home": {
+      "url": "https://images.unsplash.com/photo-1675034743339-0b0747047727?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwzfHxsdXh1cnklMjBzYWxvbiUyMGludGVyaW9yJTIwaGFpcmRyZXNzaW5nfGVufDB8fHx8MTc4MjgwMDMwMnww&ixlib=rb-4.1.0&q=85",
+      "alt": "Woman getting her hair done in a luxury salon"
+    },
+    "service_hair": {
+      "url": "https://images.unsplash.com/photo-1600948836101-f9ffda59d250?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBzYWxvbiUyMGludGVyaW9yJTIwaGFpcmRyZXNzaW5nfGVufDB8fHx8MTc4MjgwMDMwMnww&ixlib=rb-4.1.0&q=85",
+      "alt": "Luxury salon interior with mirrors and modern styling stations"
+    },
+    "service_nails": {
+      "url": "https://images.unsplash.com/photo-1633360971020-656d89f9e98e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwzfHxsdXh1cnklMjBuYWlsJTIwYXJ0JTIwbWFrZXVwJTIwc3R5bGluZ3xlbnwwfHx8fDE3ODI4MDAzMDJ8MA&ixlib=rb-4.1.0&q=85",
+      "alt": "Luxury silver nails manicure and styling"
+    },
+    "service_makeup": {
+      "url": "https://images.unsplash.com/photo-1616754244574-5145c50ec179?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBuYWlsJTIwYXJ0JTIwbWFrZXVwJTIwc3R5bGluZ3xlbnwwfHx8fDE3ODI4MDAzMDJ8MA&ixlib=rb-4.1.0&q=85",
+      "alt": "Professional luxury makeup styling"
+    },
+    "academy_training": {
+      "url": "https://images.unsplash.com/photo-1613966802194-d46a163af70d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA3MDB8MHwxfHNlYXJjaHwxfHxtYWtldXAlMjBhcnRpc3QlMjBhcHBseWluZyUyMG1ha2V1cCUyMHRyYWluaW5nfGVufDB8fHx8MTc4MjgwMDMxNnww&ixlib=rb-4.1.0&q=85",
+      "alt": "Makeup artist training session"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Strictly follow the '6 Glass / Luxe DARK' personality. Do not use plain black (#000000) or plain white backgrounds; rely on the provided deep slate and obsidian tokens.",
+    "BANNED: Do not use any blue, indigo, or purple tokens anywhere in the UI. Stick to the defined charcoal and antique gold theme.",
+    "Always apply a top-to-bottom dark gradient scrim when rendering text over images (e.g., on the Home Hero or Service Detail screens) to guarantee readability. The bottom stop must be >=70% opacity of `surfaceInverse`.",
+    "Implement glass effects (`expo-blur` / `expo-glass-effect`) on the bottom tab bar, sticky section headers, and floating CTA bars. Ensure they are layered over a tinted translucent base.",
+    "The booking flow must be entirely local state (no backend). Ensure interactions are snappy and use the specified haptic feedbacks.",
+    "Keep typography weights at 400 or 500 maximum. Allow the elegant Cormorant Garamond headings to contrast cleanly against Manrope body text.",
+    "Ensure safe area is respected at every screen root. Content must not hide beneath notches or home indicators.",
+    "Use single column or multi-column grids correctly per <Spacing_and_Layout> rules. Do not leave trailing empty half-columns on lists."
+  ]
+}
