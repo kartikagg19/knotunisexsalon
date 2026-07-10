@@ -1,8 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "installCommand": "cd artifacts/knott-salon && npm install",
-  "buildCommand": "cd artifacts/knott-salon && npm run build",
   "outputDirectory": "artifacts/knott-salon/dist",
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
