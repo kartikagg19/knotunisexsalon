@@ -15,7 +15,7 @@ export const SALON = {
 };
 
 export const HERO_IMAGE =
-  'https://images.unsplash.com/photo-1675034743339-0b0747047727?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwzfHxsdXh1cnklMjBzYWxvbiUyMGludGVyaW9yJTIwaGFpcmRyZXNzaW5nfGVufDB8fHx8MTc4MjgwMDMwMnww&ixlib=rb-4.1.0&q=85';
+  'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1600&q=90&auto=format&fit=crop';
 
 // Local salon photos (bundled from assets/gallery)
 export const LOCAL = {
@@ -143,20 +143,41 @@ export const SERVICES: Service[] = [
   {
     id: 's1',
     categoryId: 'hair',
-    name: "Men's Haircut & Shave",
-    description: 'Classic gents haircut with a clean shave and hair wash included.',
-    duration: 45,
-    tiers: [{ label: 'Cut + Shave + Wash', price: 199 }],
+    name: "Men's Haircut",
+    description: 'Sharp, professional gents haircut tailored to your style.',
+    duration: 30,
+    tiers: [{ label: "Men's", price: 149 }],
     featured: true,
     image: LOCAL.mensHaircut,
   },
   {
+    id: 's54',
+    categoryId: 'hair',
+    name: 'Beard / Shave',
+    description: 'Clean shave or beard shaping and grooming for men.',
+    duration: 20,
+    tiers: [{ label: "Men's", price: 99 }],
+    image: LOCAL.mensHaircut,
+  },
+  {
+    id: 's55',
+    categoryId: 'hair',
+    name: "Women's Haircut",
+    description: 'Basic or advanced ladies haircut tailored to your face shape.',
+    duration: 45,
+    tiers: [
+      { label: 'Basic', price: 199 },
+      { label: 'Advance', price: 349 },
+    ],
+    image: IMG.haircut,
+  },
+  {
     id: 's2',
     categoryId: 'hair',
-    name: 'Head Wash',
-    description: 'Refreshing shampoo and conditioning head wash.',
+    name: 'Hair Wash',
+    description: 'Refreshing shampoo and conditioning hair wash.',
     duration: 20,
-    tiers: [{ label: 'Standard', price: 149 }],
+    tiers: [{ label: "Men's", price: 99 }],
     image: IMG.hair,
   },
   {
@@ -165,7 +186,10 @@ export const SERVICES: Service[] = [
     name: 'Head Massage',
     description: 'Relaxing oil head massage to relieve stress and nourish the scalp.',
     duration: 30,
-    tiers: [{ label: 'Standard', price: 149 }],
+    tiers: [
+      { label: "Men's", price: 199 },
+      { label: "Women's", price: 349 },
+    ],
     image: IMG.hair,
   },
   {
@@ -183,7 +207,11 @@ export const SERVICES: Service[] = [
     name: 'Hair Spa',
     description: 'Deep-conditioning spa treatment for soft, healthy, shiny hair.',
     duration: 60,
-    tiers: [{ label: 'Standard', price: 499 }],
+    tiers: [
+      { label: 'Normal', price: 499 },
+      { label: "L'Oreal", price: 799 },
+      { label: 'Kera Spa', price: 2499 },
+    ],
     featured: true,
     image: IMG.hairspa,
   },
@@ -193,7 +221,11 @@ export const SERVICES: Service[] = [
     name: 'Hair Root Touch-up',
     description: 'Root colour touch-up to cover greys and blend regrowth.',
     duration: 75,
-    tiers: [{ label: 'Standard', price: 599 }],
+    tiers: [
+      { label: 'Streax', price: 599 },
+      { label: "L'Oreal", price: 799 },
+      { label: 'Inoa', price: 1299 },
+    ],
     image: IMG.haircolour,
   },
   {
@@ -202,7 +234,7 @@ export const SERVICES: Service[] = [
     name: 'Hair Ironing / Pressing',
     description: 'Sleek, straight, frizz-free finish with professional ironing.',
     duration: 45,
-    tiers: [{ label: 'Standard', price: 249 }],
+    tiers: [{ label: 'Standard', price: 399 }],
     image: IMG.hairspa,
   },
   {
@@ -215,13 +247,45 @@ export const SERVICES: Service[] = [
     image: LOCAL.hairStyling,
   },
 
-  // ---------- HAIR CHEMICAL ----------
+  // ---------- HAIR TREATMENT ----------
   {
     id: 's49',
     categoryId: 'hair',
     name: 'Keratin Treatment',
     description: 'Frizz-control keratin treatment for smooth, manageable, shiny hair.',
     duration: 180,
+    tiers: [
+      { label: 'Brazilian', price: 1999 },
+      { label: 'Keratin', price: 2999 },
+      { label: 'Chocolate Keratin', price: 3499 },
+      { label: 'G.K. Keratin', price: 4599 },
+    ],
+    image: IMG.hairspa,
+  },
+  {
+    id: 's56',
+    categoryId: 'hair',
+    name: 'Anti-Dandruff Treatment',
+    description: 'Targeted treatment to clear dandruff and soothe the scalp.',
+    duration: 60,
+    tiers: [{ label: 'Standard', price: 1999 }],
+    image: IMG.hairspa,
+  },
+  {
+    id: 's57',
+    categoryId: 'hair',
+    name: 'Hair Loss Treatment',
+    description: 'Strengthening treatment to reduce hair fall and boost growth.',
+    duration: 60,
+    tiers: [{ label: 'Standard', price: 1999 }],
+    image: IMG.hairspa,
+  },
+  {
+    id: 's58',
+    categoryId: 'hair',
+    name: 'Hair Silk Treatment',
+    description: 'Silk therapy for soft, glossy, deeply nourished hair.',
+    duration: 60,
     tiers: [{ label: 'Standard', price: 1999 }],
     image: IMG.hairspa,
   },
@@ -271,8 +335,7 @@ export const SERVICES: Service[] = [
     duration: 45,
     tiers: [
       { label: 'Basic', price: 249 },
-      { label: 'Gold', price: 350 },
-      { label: 'Diamond', price: 500 },
+      { label: 'Raga', price: 999 },
     ],
     image: IMG.facial,
   },
@@ -283,8 +346,8 @@ export const SERVICES: Service[] = [
     description: 'Radiance-boosting gold facial for an instant glow.',
     duration: 60,
     tiers: [
-      { label: 'Normal', price: 350 },
-      { label: 'FYC', price: 1200 },
+      { label: 'Normal', price: 499 },
+      { label: 'FYC Gold', price: 999 },
     ],
     image: IMG.facial,
   },
@@ -305,7 +368,7 @@ export const SERVICES: Service[] = [
     duration: 60,
     tiers: [
       { label: 'Normal', price: 999 },
-      { label: 'FYC', price: 1800 },
+      { label: 'FYC Wine', price: 1199 },
     ],
     image: IMG.facial,
   },
@@ -324,7 +387,7 @@ export const SERVICES: Service[] = [
     name: 'Aroma Facial',
     description: 'Soothing aroma facial with essential oils for relaxation.',
     duration: 60,
-    tiers: [{ label: 'Standard', price: 999 }],
+    tiers: [{ label: 'Standard', price: 599 }],
     image: IMG.facial,
   },
   {
@@ -333,7 +396,7 @@ export const SERVICES: Service[] = [
     name: 'Lotus Facial',
     description: 'Herbal Lotus facial for clear, refreshed and even-toned skin.',
     duration: 60,
-    tiers: [{ label: 'Standard', price: 1100 }],
+    tiers: [{ label: 'Standard', price: 699 }],
     image: IMG.facial,
   },
   {
@@ -342,7 +405,7 @@ export const SERVICES: Service[] = [
     name: 'Crystal Facial',
     description: 'Crystal facial that cleanses, tones and adds a healthy shine.',
     duration: 60,
-    tiers: [{ label: 'Standard', price: 800 }],
+    tiers: [{ label: 'Standard', price: 499 }],
     image: IMG.facial,
   },
   {
@@ -351,7 +414,7 @@ export const SERVICES: Service[] = [
     name: 'O3+ Facial',
     description: 'Professional O3+ facial for deep repair and glow.',
     duration: 75,
-    tiers: [{ label: 'Standard', price: 2500 }],
+    tiers: [{ label: 'Standard', price: 1599 }],
     image: IMG.facial,
   },
   {
@@ -367,13 +430,10 @@ export const SERVICES: Service[] = [
   {
     id: 's19',
     categoryId: 'facial',
-    name: 'Korean Facial',
-    description: 'Glass-skin Korean facial for a smooth, glowing complexion.',
+    name: 'Korean Hydra Facial',
+    description: 'Glass-skin Korean hydra facial for a smooth, glowing complexion.',
     duration: 75,
-    tiers: [
-      { label: 'Classic', price: 1999 },
-      { label: 'Hydra', price: 3500 },
-    ],
+    tiers: [{ label: 'Standard', price: 3999 }],
     image: IMG.face,
   },
   {
@@ -440,7 +500,10 @@ export const SERVICES: Service[] = [
     name: 'Full Arms Wax',
     description: 'Smooth, gentle hair removal for the full arms.',
     duration: 30,
-    tiers: [{ label: 'Normal Wax', price: 250 }],
+    tiers: [
+      { label: 'Normal', price: 250 },
+      { label: 'Rica', price: 450 },
+    ],
     image: IMG.wax,
   },
   {
@@ -449,7 +512,10 @@ export const SERVICES: Service[] = [
     name: 'Half Leg Wax',
     description: 'Half-leg waxing for silky-smooth skin.',
     duration: 30,
-    tiers: [{ label: 'Normal Wax', price: 250 }],
+    tiers: [
+      { label: 'Normal', price: 250 },
+      { label: 'Rica', price: 450 },
+    ],
     image: IMG.wax,
   },
   {
@@ -458,7 +524,10 @@ export const SERVICES: Service[] = [
     name: 'Full Leg Wax',
     description: 'Full-leg waxing for long-lasting smoothness.',
     duration: 45,
-    tiers: [{ label: 'Normal Wax', price: 500 }],
+    tiers: [
+      { label: 'Normal', price: 500 },
+      { label: 'Rica', price: 700 },
+    ],
     image: IMG.wax,
   },
   {
@@ -467,7 +536,10 @@ export const SERVICES: Service[] = [
     name: 'Half Tummy Wax',
     description: 'Gentle half-tummy hair removal.',
     duration: 20,
-    tiers: [{ label: 'Normal Wax', price: 250 }],
+    tiers: [
+      { label: 'Normal', price: 250 },
+      { label: 'Rica', price: 500 },
+    ],
     image: IMG.wax,
   },
   {
@@ -476,7 +548,10 @@ export const SERVICES: Service[] = [
     name: 'Full Tummy Wax',
     description: 'Complete tummy waxing for smooth skin.',
     duration: 30,
-    tiers: [{ label: 'Normal Wax', price: 500 }],
+    tiers: [
+      { label: 'Normal', price: 500 },
+      { label: 'Rica', price: 700 },
+    ],
     image: IMG.wax,
   },
   {
@@ -485,7 +560,10 @@ export const SERVICES: Service[] = [
     name: 'Half Back Wax',
     description: 'Half-back waxing done with care.',
     duration: 20,
-    tiers: [{ label: 'Normal Wax', price: 250 }],
+    tiers: [
+      { label: 'Normal', price: 250 },
+      { label: 'Rica', price: 500 },
+    ],
     image: IMG.wax,
   },
   {
@@ -494,7 +572,10 @@ export const SERVICES: Service[] = [
     name: 'Full Back Wax',
     description: 'Full-back waxing for a clean, smooth finish.',
     duration: 30,
-    tiers: [{ label: 'Normal Wax', price: 500 }],
+    tiers: [
+      { label: 'Normal', price: 500 },
+      { label: 'Rica', price: 700 },
+    ],
     image: IMG.wax,
   },
   {
@@ -503,8 +584,20 @@ export const SERVICES: Service[] = [
     name: 'Full Body Wax',
     description: 'Complete full-body waxing for all-over smoothness.',
     duration: 90,
-    tiers: [{ label: 'Normal Wax', price: 1400 }],
+    tiers: [
+      { label: 'Normal', price: 1400 },
+      { label: 'Rica', price: 2000 },
+    ],
     featured: true,
+    image: IMG.wax,
+  },
+  {
+    id: 's59',
+    categoryId: 'waxing',
+    name: 'V Wax (Rica)',
+    description: 'Intimate bikini-line waxing with gentle Rica wax.',
+    duration: 30,
+    tiers: [{ label: 'Rica', price: 1200 }],
     image: IMG.wax,
   },
   {
@@ -598,9 +691,9 @@ export const SERVICES: Service[] = [
     description: 'Sculpted nail extensions shaped and finished to your style.',
     duration: 90,
     tiers: [
+      { label: 'Temporary (Hand)', price: 300 },
       { label: 'Permanent (Hand)', price: 500 },
       { label: 'Feet', price: 700 },
-      { label: 'Temporary (Hand)', price: 800 },
     ],
     featured: true,
     image: IMG.nailext,
@@ -687,7 +780,10 @@ export const SERVICES: Service[] = [
     name: 'Body Massage',
     description: 'Full-body relaxation massage to relieve stress and tension.',
     duration: 60,
-    tiers: [{ label: 'Standard', price: 999 }],
+    tiers: [
+      { label: 'Oil', price: 1200 },
+      { label: 'Cream', price: 1500 },
+    ],
     image: IMG.spa,
   },
   {
@@ -696,7 +792,7 @@ export const SERVICES: Service[] = [
     name: 'Body Polishing',
     description: 'Exfoliating body polish for smooth, glowing, even-toned skin.',
     duration: 75,
-    tiers: [{ label: 'Standard', price: 1499 }],
+    tiers: [{ label: 'Standard', price: 2000 }],
     image: IMG.spa,
   },
 ];
