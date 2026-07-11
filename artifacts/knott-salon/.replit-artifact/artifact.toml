@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "KNOTT Unisex Salon & Academy"
+version = "1.0.0"
+id = "artifacts/knott-salon"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21432
+
+[services.development]
+run = "pnpm --filter @workspace/knott-salon run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/knott-salon", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/knott-salon/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21432"
+BASE_PATH = "/"

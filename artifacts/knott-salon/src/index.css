@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  /* ── Minimal dark — warm graphite, not pure black ── */
+  --background: 25 9% 9%;          /* warm charcoal #191715 */
+  --foreground: 38 28% 93%;        /* warm ivory text */
+
+  --border: 30 8% 20%;
+  --card: 27 9% 12%;                /* slightly raised charcoal card */
+  --card-foreground: 38 28% 93%;
+  --card-border: 30 8% 18%;
+
+  --popover: 25 9% 11%;
+  --popover-foreground: 38 28% 93%;
+  --popover-border: 30 8% 18%;
+
+  /* ── Primary: warm champagne gold ── */
+  --primary: 38 62% 58%;           /* champagne gold #CFA05C */
+  --primary-foreground: 25 20% 10%;
+  --primary-border: hsl(38 62% 46%);
+
+  --secondary: 27 8% 17%;
+  --secondary-foreground: 38 28% 93%;
+  --secondary-border: hsl(27 8% 24%);
+
+  --muted: 27 8% 15%;
+  --muted-foreground: 32 10% 62%;
+  --muted-border: hsl(27 8% 22%);
+
+  /* ── Accent: dusty rose for gradient pairing ── */
+  --accent: 350 38% 56%;
+  --accent-foreground: 38 28% 96%;
+  --accent-border: hsl(350 38% 44%);
+
+  --destructive: 0 70% 56%;
+  --destructive-foreground: 0 0% 100%;
+  --destructive-border: hsl(0 70% 44%);
+
+  --input: 30 8% 22%;
+  --ring: 38 62% 58%;
+
+  --app-font-sans: 'Inter', sans-serif;
+  --app-font-serif: 'Playfair Display', serif;
+  --app-font-mono: Menlo, monospace;
+  --radius: 0.4rem;
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply font-sans antialiased bg-background text-foreground; }
+  h1, h2, h3, h4, h5, h6 { @apply font-serif font-normal; }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 28px rgba(207, 160, 92, 0.28);
+  }
+  .box-glow {
+    box-shadow: 0 0 32px rgba(207, 160, 92, 0.16);
+  }
+
+  /* Gold → rose gradient — the signature heading treatment */
+  .gradient-heading {
+    background: linear-gradient(120deg, #E9C382 0%, #CFA05C 45%, #C97B72 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Softer gradient for smaller labels / eyebrow text */
+  .gradient-label {
+    background: linear-gradient(120deg, #E9C382 0%, #D6A96B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Section wash — subtle radial glow used behind hero/section headers */
+  .section-glow {
+    background:
+      radial-gradient(60% 50% at 15% 0%, rgba(207,160,92,0.10) 0%, transparent 60%),
+      radial-gradient(50% 40% at 100% 100%, rgba(201,123,114,0.08) 0%, transparent 60%);
+  }
+
+  .footer-gradient {
+    background: linear-gradient(180deg, #16130f 0%, #100e0b 100%);
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(207,160,92,0) 0%,
+      rgba(207,160,92,0.25) 50%,
+      rgba(207,160,92,0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+  .marquee-content { animation: marquee 38s linear infinite; }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+@keyframes marquee {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+button, a { -webkit-tap-highlight-color: transparent; }
+input[type='search']::-webkit-search-cancel-button { display: none; }
+::selection { background: rgba(207,160,92,0.3); color: #fff; }
+
+/* thin, minimal scrollbar to keep the dark theme tidy */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(207,160,92,0.25); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(207,160,92,0.4); }

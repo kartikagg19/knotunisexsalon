@@ -1,0 +1,2 @@
+- [React-vite scaffold defaults](react-vite-scaffold-defaults.md) — the standard react-vite artifact template already ships framer-motion, wouter, react-icons, shadcn ui/radix; don't assume they need installing.
+- [Git remote required before push](git-remote-required.md) — gitPush fails NO_REMOTE if origin isn't configured; cloning a reference repo to /tmp does not set up the workspace's own origin.
