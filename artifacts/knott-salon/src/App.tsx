@@ -8,13 +8,23 @@ import Academy from '@/pages/Academy';
 import Booking from '@/pages/Booking';
 import Contact from '@/pages/Contact';
 import BottomNav from '@/components/layout/BottomNav';
-import { Route, Switch, Router as WouterRouter } from 'wouter';
+import { Route, Switch, Router as WouterRouter, useLocation } from 'wouter';
+import { useLayoutEffect } from 'react';
 
 const queryClient = new QueryClient();
+
+function ScrollToTop() {
+  const [location] = useLocation();
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+  return null;
+}
 
 function Router() {
   return (
     <>
+      <ScrollToTop />
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/services" component={Services} />
