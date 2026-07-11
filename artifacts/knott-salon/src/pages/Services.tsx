@@ -147,7 +147,7 @@ export default function Services() {
             Message us on WhatsApp and our stylists will help you choose the right treatment.
           </p>
           <a
-            href="https://wa.me/919999999999?text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Knot%20Unisex%20Salon."
+            href="https://wa.me/919716002672?text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Knot%20Unisex%20Salon."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-8 py-4 bg-primary text-primary-foreground uppercase text-xs tracking-[0.22em] font-medium rounded-sm hover:bg-primary/85 transition-colors"
