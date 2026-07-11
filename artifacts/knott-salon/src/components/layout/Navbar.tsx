@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
-  { name: "Home",     href: "/" },
+  { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
-  { name: "Gallery",  href: "/gallery" },
-  { name: "Contact",  href: "/contact" },
+  { name: "Academy", href: "/academy" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -16,13 +16,11 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 50);
+    const onScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Transparent dark-text-safe overlay ONLY when at the very top of the home page
-  // — all other pages always render against the light background
   const heroMode = location === "/" && !isScrolled;
 
   return (
@@ -30,42 +28,31 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 border-b ${
         heroMode
           ? "bg-transparent border-transparent py-4"
-          : "bg-background/95 backdrop-blur-md border-border/50 py-3 shadow-[0_1px_12px_rgba(0,0,0,0.06)]"
+          : "bg-background/90 backdrop-blur-md border-border/60 py-3 shadow-[0_1px_20px_rgba(0,0,0,0.35)]"
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-
-        {/* Logo */}
         <Link href="/" className="group flex-shrink-0 leading-none" data-testid="link-logo">
-          <span className={`block font-serif italic text-2xl md:text-[1.75rem] tracking-widest transition-colors duration-300 ${
-            heroMode ? "text-[#D4956A]" : "cognac-gradient-text"
-          }`}>
+          <span className="block font-serif italic text-2xl md:text-[1.75rem] tracking-widest gradient-heading">
             KNOTT
           </span>
-          <span className={`block text-[8.5px] tracking-[0.24em] uppercase font-medium transition-colors duration-300 mt-px ${
-            heroMode ? "text-white/65" : "text-foreground/55"
-          }`}>
+          <span className="block text-[8.5px] tracking-[0.24em] uppercase font-medium text-foreground/50 mt-px">
             Unisex Salon &amp; Academy
           </span>
         </Link>
 
-        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {links.map((link) => (
             <Link
               key={link.name}
               href={link.href}
               className={`relative text-[11px] uppercase tracking-[0.2em] transition-colors duration-300 ${
-                heroMode
-                  ? "text-white/75 hover:text-[#E8C09A]"
-                  : location === link.href
-                    ? "text-primary"
-                    : "text-foreground/60 hover:text-foreground"
+                location === link.href ? "text-primary" : "text-foreground/60 hover:text-foreground"
               }`}
               data-testid={`link-desktop-${link.name.toLowerCase()}`}
             >
               {link.name}
-              {location === link.href && !heroMode && (
+              {location === link.href && (
                 <motion.div
                   layoutId="nav-underline"
                   className="absolute -bottom-2 left-0 right-0 h-[1.5px] bg-primary rounded-full"
@@ -83,11 +70,8 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile toggle */}
         <button
-          className={`md:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-md transition-colors ${
-            heroMode ? "text-white" : "text-foreground"
-          }`}
+          className="md:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-md text-foreground transition-colors"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -95,7 +79,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile drawer */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div

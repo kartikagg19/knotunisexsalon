@@ -1,6 +1,6 @@
 kind = "web"
 previewPath = "/"
-title = "KNOTT Unisex Salon"
+title = "KNOTT Unisex Salon & Academy"
 version = "1.0.0"
 id = "artifacts/knott-salon"
 router = "path"
