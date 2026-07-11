@@ -1,7 +1,11 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "cd frontend && yarn install && npx expo export -p web",
+  "outputDirectory": "frontend/dist",
   "framework": null,
-  "buildCommand": "pnpm --filter @workspace/knott-salon build",
-  "outputDirectory": "artifacts/knott-salon/dist/public",
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
