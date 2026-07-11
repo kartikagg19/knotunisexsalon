@@ -1,7 +1,7 @@
 {
-  "installCommand": "cd frontend && yarn install",
-  "buildCommand": "cd frontend && npx expo export -p web",
-  "outputDirectory": "frontend/dist",
+  "installCommand": "cd artifacts/knott-salon && npm install",
+  "buildCommand": "cd artifacts/knott-salon && npm run build",
+  "outputDirectory": "artifacts/knott-salon/dist",
   "framework": null,
   "rewrites": [
     {
