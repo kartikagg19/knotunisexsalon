@@ -1,0 +1,8 @@
+﻿commit 569a732f7f4fcf8c80038613dfbefb6d6d28900e
+Author: kartik aggarwal <kartikaggarwal546@gmail.com>
+Date:   Wed Jul 8 21:41:10 2026 +0530
+
+    style: advance to opulent glassmorphic theme
+
+M	frontend/app/(tabs)/index.tsx
+M	frontend/src/theme/tokens.ts

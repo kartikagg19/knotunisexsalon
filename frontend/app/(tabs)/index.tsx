@@ -11,7 +11,7 @@ import {
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
-import Animated, { useSharedValue, useAnimatedStyle, withRepeat, withTiming, Easing, withSequence } from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedStyle, withRepeat, withTiming, Easing, withSequence, FadeInUp } from 'react-native-reanimated';
 import { useRouter } from 'expo-router';
 import { BlurView } from 'expo-blur';
 
@@ -20,7 +20,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Haptics from 'expo-haptics';
 
 import { colors, fonts, radius, spacing } from '@/src/theme/tokens';
-import { SALON, HERO_IMAGE, CATEGORIES, REVIEWS, GALLERY } from '@/src/data/salon';
+import { SALON, HERO_IMAGE, CATEGORIES, REVIEWS } from '@/src/data/salon';
 import GoldButton from '@/src/components/GoldButton';
 
 const { width } = Dimensions.get('window');
@@ -66,7 +66,7 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#fff8eb', '#fdf3e2', '#f6e4c7', '#fff8eb']}
+        colors={[colors.surface, 'rgba(20,20,25,0.95)', '#121215']}
         start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
         style={StyleSheet.absoluteFill}
       />
@@ -79,7 +79,7 @@ export default function HomeScreen() {
         <View style={styles.hero}>
           <AnimatedImage source={HERO_IMAGE} style={[styles.heroImg, animatedStyle]} contentFit="cover" transition={400} />
           <LinearGradient
-            colors={['rgba(255,248,235,0.1)', 'rgba(255,248,235,0.65)', '#fff8eb']}
+            colors={['rgba(20,20,25,0.1)', 'rgba(20,20,25,0.85)', '#121215']}
             locations={[0, 0.45, 1]}
             style={StyleSheet.absoluteFill}
           />
@@ -148,7 +148,8 @@ export default function HomeScreen() {
         </View>
 
         {/* CATEGORIES */}
-        <SectionTitle label="Explore" sub="Curated by category" />
+        <Animated.View entering={FadeInUp.delay(200).duration(800)}>
+          <SectionTitle label="Explore" sub="Curated by category" />
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -174,32 +175,11 @@ export default function HomeScreen() {
             </Pressable>
           ))}
         </ScrollView>
-
-        {/* GALLERY */}
-        <View style={styles.sectionHeaderRow}>
-          <View>
-            <Text style={styles.sectionLabel}>Gallery</Text>
-            <Text style={styles.sectionSub}>Our recent work</Text>
-          </View>
-          <Pressable testID="see-all-gallery" onPress={() => router.push('/gallery')}>
-            <Text style={styles.seeAll}>View all →</Text>
-          </Pressable>
-        </View>
-        <View style={styles.galleryGrid}>
-          {GALLERY.map((url, i) => (
-            <Pressable
-              key={`${url}-${i}`}
-              testID={`home-gallery-${i}`}
-              onPress={() => router.push('/gallery')}
-              style={styles.galleryCell}
-            >
-              <Image source={url} style={styles.galleryImg} contentFit="cover" />
-            </Pressable>
-          ))}
-        </View>
+        </Animated.View>
 
         {/* REVIEWS */}
-        <SectionTitle label="Loved by Delhi" sub={`${SALON.rating}/5 from real guests`} />
+        <Animated.View entering={FadeInUp.delay(400).duration(800)}>
+          <SectionTitle label="Loved by Delhi" sub={`${SALON.rating}/5 from real guests`} />
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -225,9 +205,11 @@ export default function HomeScreen() {
             </View>
           ))}
         </ScrollView>
+        </Animated.View>
 
         {/* VISIT US */}
-        <SectionTitle label="Visit Us" sub="Book an appointment or drop by" />
+        <Animated.View entering={FadeInUp.delay(600).duration(800)}>
+          <SectionTitle label="Visit Us" sub="Book an appointment or drop by" />
         <View style={styles.visitWrap}>
           <View style={styles.infoRow}>
             <View style={styles.infoIcon}>
@@ -262,9 +244,11 @@ export default function HomeScreen() {
             <Text style={styles.directionsText}>Get Directions</Text>
           </Pressable>
         </View>
+        </Animated.View>
 
         {/* FOOTER */}
-        <View style={styles.footer}>
+        <Animated.View entering={FadeInUp.delay(800).duration(800)}>
+          <View style={styles.footer}>
           <Text style={styles.footerName}>{SALON.name}</Text>
           <Text style={styles.footerTag}>{SALON.tagline} · {SALON.location}</Text>
           <Text style={styles.footerAddr}>{SALON.address}</Text>
@@ -276,6 +260,7 @@ export default function HomeScreen() {
             © {new Date().getFullYear()} {SALON.name}. All rights reserved.
           </Text>
         </View>
+        </Animated.View>
       </ScrollView>
     </View>
   );
@@ -293,7 +278,7 @@ function SectionTitle({ label, sub }: { label: string; sub: string }) {
 const HERO_H = 560;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff8eb' },
+  container: { flex: 1, backgroundColor: '#121215' },
   hero: { width, height: HERO_H, backgroundColor: 'transparent', overflow: 'hidden' },
   heroImg: { ...StyleSheet.absoluteFillObject },
   heroHeader: {

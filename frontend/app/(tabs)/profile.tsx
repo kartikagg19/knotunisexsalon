@@ -45,10 +45,10 @@ export default function ProfileScreen() {
           testID="qa-book"
         />
         <QuickAction
-          icon="images-outline"
-          label="Gallery"
-          onPress={() => router.push('/gallery')}
-          testID="qa-gallery"
+          icon="sparkles-outline"
+          label="Services"
+          onPress={() => router.push('/services')}
+          testID="qa-services"
         />
         <QuickAction
           icon="location-outline"

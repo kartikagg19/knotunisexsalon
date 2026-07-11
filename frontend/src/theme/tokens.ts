@@ -2,27 +2,27 @@ import { Platform } from 'react-native';
 
 export const colors = {
   // Using RGBA colors to support glassmorphism layers beneath UI components
-  surface: 'rgba(255, 255, 255, 0.65)',
-  onSurface: '#1F1406',
-  surfaceSecondary: 'rgba(255, 248, 235, 0.5)', // warm gold tinted glass
-  onSurfaceSecondary: '#3E2A14',
-  surfaceTertiary: 'rgba(255, 255, 255, 0.8)',
-  onSurfaceTertiary: '#644723',
-  surfaceInverse: '#140c03',
-  onSurfaceInverse: '#FFFFFF',
-  brand: '#F9D423',
-  brandPrimary: '#F8C01B',
-  onBrandPrimary: '#FFFFFF',
-  brandSecondary: '#FF4E50', // energetic advanced coral/gold blend vibe
-  brandTertiary: '#FFF5E1',
-  onBrandTertiary: '#C29311',
+  surface: 'rgba(18, 18, 23, 0.75)',
+  onSurface: '#F9FAFB',
+  surfaceSecondary: 'rgba(30, 32, 40, 0.65)', // Sleek dark glass
+  onSurfaceSecondary: '#E5E7EB',
+  surfaceTertiary: 'rgba(40, 42, 52, 0.8)',
+  onSurfaceTertiary: '#D1D5DB',
+  surfaceInverse: '#F3F4F6',
+  onSurfaceInverse: '#111827',
+  brand: '#D4AF37', // Refined sophisticated gold
+  brandPrimary: '#C29B16',
+  onBrandPrimary: '#000000',
+  brandSecondary: '#FF4E50', // Energetic advanced coral/gold blend vibe
+  brandTertiary: '#2A2415',
+  onBrandTertiary: '#D4AF37',
   success: '#10B981',
   warning: '#F59E0B',
   error: '#EF4444',
-  border: 'rgba(255, 255, 255, 0.55)',
-  borderStrong: 'rgba(255, 255, 255, 0.85)',
-  divider: 'rgba(0, 0, 0, 0.06)',
-  muted: '#8E7152',
+  border: 'rgba(255, 255, 255, 0.12)',
+  borderStrong: 'rgba(255, 255, 255, 0.25)',
+  divider: 'rgba(255, 255, 255, 0.08)',
+  muted: '#9CA3AF',
 };
 
 export const spacing = {

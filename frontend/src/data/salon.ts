@@ -304,7 +304,10 @@ export const SERVICES: Service[] = [
     name: 'Global Hair Colour',
     description: 'Full-head colour transformation using premium formulas.',
     duration: 120,
-    tiers: [{ label: 'Standard', price: 2499 }],
+    tiers: [
+      { label: 'Basic', price: 2000 },
+      { label: 'Premium', price: 4000 },
+    ],
     image: IMG.haircolour,
   },
   {
@@ -313,7 +316,10 @@ export const SERVICES: Service[] = [
     name: 'Highlights',
     description: 'Custom highlights to add dimension, depth and shine.',
     duration: 120,
-    tiers: [{ label: 'Standard', price: 2499 }],
+    tiers: [
+      { label: 'Basic', price: 3500 },
+      { label: 'Premium', price: 6000 },
+    ],
     image: IMG.haircolour,
   },
   {

@@ -1,0 +1,32 @@
+﻿9e3f064 Merge branch 'main' of https://github.com/kartikagg19/knotunisexsalon
+7340ce8 Merge pull request #5 from kartikagg19/production
+ef48560 fix: make PORT/BASE_PATH optional in vite.config.ts so production build works
+404518b Fix Vercel deploy after Replit merge + update service prices
+10061bd Merge pull request #3 from kartikagg19/replit
+6b0f43f Merge pull request #2 from kartikagg19/main
+6382467 Merge pull request #1 from kartikagg19/replit
+ab20834 Merge remote-tracking branch 'origin/main'
+4f16d16 fix: remove duplicate Open Daily, Book slot button links to /booking, add inline booking form on home page
+8ca4029 hero: remove WhatsApp Us button, replace social icons with Instagram + Phone only
+d8e578a Remove BottomNav component and redesign Home page with new image assets
+f32bddd Update layout and content components for improved styling and messaging across footer, contact, and home pages
+2055d8c Refactor styling and layout components with CSS and component updates
+70ddfcf Refactor layout components and styling for improved responsive design in Knott Salon
+2302d6b Add Knott Salon project artifacts with package configuration and dependencies
+569a732 style: advance to opulent glassmorphic theme
+4738793 style: implement light luxury theme and dynamic moving hero
+78be837 Initial commit
+4641f15 Use real salon photos for gallery and services
+a51f682 Remove My Appointments section from profile
+d3285f9 Update owner number, Instagram, and date/time pickers
+3f0a12b Route booking WhatsApp to test number
+5a0bc83 Fix broken bridal image + premium polish
+bef9d12 Add Gallery section to home page
+1a2b399 Simplify booking flow, refine home & profile
+d94f7ba Update home page + fix menu prices
+0195dcf Replace demo services with real salon menu
+8717b03 Trigger Vercel git deploy
+4eda7fb Make app buildable/deployable: add babel config + Vercel setup
+a7589d2 Export local code to GitHub repo
+d1035d6 auto-commit for 7b352bc7-4be0-44d8-b722-ba6ed4b15c12
+682a165 Initial commit
