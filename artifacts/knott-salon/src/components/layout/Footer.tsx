@@ -8,11 +8,17 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
-            <Link href="/" className="inline-block mb-4" data-testid="link-footer-logo">
-              <span className="font-serif italic text-3xl tracking-widest gradient-heading text-glow">
-                KNOTT
-              </span>
-              <p className="text-[9px] text-white/40 tracking-[0.22em] uppercase mt-0.5">Unisex Salon &amp; Academy</p>
+              <div className="flex flex-col justify-center">
+                <span 
+                  className="block text-4xl md:text-[2.75rem] leading-[0.8] tracking-normal gradient-heading pb-1 text-glow"
+                  style={{ fontFamily: 'Great Vibes, cursive', fontWeight: 400 }}
+                >
+                  Knott
+                </span>
+                <span className="block font-serif text-[9px] tracking-[0.25em] font-medium text-white/50 uppercase ml-1">
+                  Unisex Salon &amp; Academy
+                </span>
+              </div>
             </Link>
             <p className="text-white/40 mb-6 font-light leading-relaxed text-sm">
               Nail, Makeup, Beauty, Skin, Hair — a minimal, moody salon &amp; academy in Uttam Nagar since 2021.

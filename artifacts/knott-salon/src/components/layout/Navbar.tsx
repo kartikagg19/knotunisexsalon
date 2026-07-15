@@ -32,13 +32,19 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link href="/" className="group flex-shrink-0 leading-none" data-testid="link-logo">
-          <span className="block font-serif italic text-2xl md:text-[1.75rem] tracking-widest gradient-heading">
-            KNOTT
-          </span>
-          <span className="block text-[8.5px] tracking-[0.24em] uppercase font-medium text-foreground/50 mt-px">
-            Unisex Salon &amp; Academy
-          </span>
+        <Link href="/" className="group flex-shrink-0 flex items-center gap-3" data-testid="link-logo">
+          {/* We use an inline style for the font-family as a fallback, and a beautiful gold gradient for Knott */}
+          <div className="flex flex-col justify-center">
+            <span 
+              className="block text-4xl md:text-[2.75rem] leading-[0.8] tracking-normal gradient-heading pb-1"
+              style={{ fontFamily: 'Great Vibes, cursive', fontWeight: 400 }}
+            >
+              Knott
+            </span>
+            <span className="block font-serif text-[9px] md:text-[10.5px] tracking-[0.25em] font-medium text-foreground/80 uppercase ml-1">
+              Unisex Salon &amp; Academy
+            </span>
+          </div>
         </Link>
 
         <div className="hidden md:flex items-center gap-8">

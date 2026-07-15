@@ -33,7 +33,7 @@ export const courses: Course[] = [
     seats: "10 seats",
     fee: "₹34,999",
     image:
-      "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=900&q=85&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=900&q=85&auto=format&fit=crop",
     description:
       "Cutting, colour theory and editorial styling techniques taught by working senior stylists.",
   },
