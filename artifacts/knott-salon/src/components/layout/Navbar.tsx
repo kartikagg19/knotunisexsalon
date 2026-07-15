@@ -35,7 +35,7 @@ export default function Navbar() {
         <Link href="/" className="group flex-shrink-0 flex items-center" data-testid="link-logo">
           <div className="flex flex-col justify-center">
             <span 
-              className="block text-[2.75rem] md:text-[3.25rem] leading-[0.8] tracking-normal gradient-heading pb-1 pl-2 pr-4 text-glow transition-transform duration-500 group-hover:scale-105 origin-left"
+              className="block text-[3rem] md:text-[3.6rem] leading-[0.8] tracking-normal gradient-heading pb-1 pl-2 pr-4 text-glow transition-transform duration-500 group-hover:scale-105 origin-left"
               style={{ fontFamily: 'Great Vibes, cursive', fontWeight: 700 }}
             >
               Knott
