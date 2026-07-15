@@ -32,16 +32,20 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link href="/" className="group flex-shrink-0 flex items-center gap-3 md:gap-4" data-testid="link-logo">
-          <img src="/logo.png" alt="Knott Logo" className="w-[42px] h-[42px] md:w-[58px] md:h-[58px] object-contain drop-shadow-[0_0_8px_rgba(207,160,92,0.3)] transition-transform duration-500 group-hover:scale-105" />
+        <Link href="/" className="group flex-shrink-0 flex items-center gap-1.5 md:gap-2.5" data-testid="link-logo">
+          <img 
+            src="/logo.png" 
+            alt="Knott Logo" 
+            className="w-[48px] h-[48px] md:w-[64px] md:h-[64px] object-contain drop-shadow-[0_0_8px_rgba(207,160,92,0.3)] scale-[1.15] transition-transform duration-500 group-hover:scale-[1.2]" 
+          />
           <div className="flex flex-col justify-center translate-y-0.5">
             <span 
-              className="block text-[2.5rem] md:text-[3rem] leading-[0.8] tracking-normal gradient-heading pb-0.5 text-glow"
+              className="block text-[2.25rem] md:text-[2.6rem] leading-[0.8] tracking-normal gradient-heading pb-0.5 text-glow"
               style={{ fontFamily: 'Great Vibes, cursive', fontWeight: 400 }}
             >
               Knott
             </span>
-            <span className="block font-serif text-[8px] md:text-[9.5px] tracking-[0.3em] font-medium text-foreground/80 uppercase ml-1">
+            <span className="block font-serif text-[7.5px] md:text-[9px] tracking-[0.25em] font-medium text-foreground/80 uppercase ml-0.5 mt-0.5">
               Unisex Salon &amp; Academy
             </span>
           </div>

@@ -8,16 +8,20 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
-            <Link href="/" className="inline-flex items-center gap-3 mb-6 group" data-testid="link-footer-logo">
-              <img src="/logo.png" alt="Knott Logo" className="w-[38px] h-[38px] object-contain drop-shadow-[0_0_8px_rgba(207,160,92,0.3)] transition-transform duration-500 group-hover:scale-105" />
+            <Link href="/" className="inline-flex items-center gap-2 mb-6 group" data-testid="link-footer-logo">
+              <img 
+                src="/logo.png" 
+                alt="Knott Logo" 
+                className="w-[42px] h-[42px] md:w-[48px] md:h-[48px] object-contain drop-shadow-[0_0_8px_rgba(207,160,92,0.3)] scale-[1.15] transition-transform duration-500 group-hover:scale-[1.2]" 
+              />
               <div className="flex flex-col justify-center translate-y-0.5">
                 <span 
-                  className="block text-4xl md:text-[2.75rem] leading-[0.8] tracking-normal gradient-heading pb-0.5 text-glow"
+                  className="block text-[2.25rem] md:text-[2.6rem] leading-[0.8] tracking-normal gradient-heading pb-0.5 text-glow"
                   style={{ fontFamily: 'Great Vibes, cursive', fontWeight: 400 }}
                 >
                   Knott
                 </span>
-                <span className="block font-serif text-[8.5px] tracking-[0.25em] font-medium text-white/50 uppercase ml-1">
+                <span className="block font-serif text-[7.5px] md:text-[9px] tracking-[0.25em] font-medium text-white/50 uppercase ml-0.5 mt-0.5">
                   Unisex Salon &amp; Academy
                 </span>
               </div>
