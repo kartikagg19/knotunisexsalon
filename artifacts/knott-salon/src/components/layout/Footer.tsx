@@ -8,11 +8,11 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
-            <Link href="/" className="inline-flex items-center gap-2 mb-6 group" data-testid="link-footer-logo">
+            <Link href="/" className="inline-flex items-center gap-0 mb-6 group" data-testid="link-footer-logo">
               <img 
                 src="/logo.png" 
                 alt="Knott Logo" 
-                className="w-[42px] h-[42px] md:w-[48px] md:h-[48px] object-contain drop-shadow-[0_0_8px_rgba(207,160,92,0.3)] scale-[1.15] transition-transform duration-500 group-hover:scale-[1.2]" 
+                className="w-[48px] h-[48px] md:w-[56px] md:h-[56px] object-contain drop-shadow-[0_0_8px_rgba(207,160,92,0.3)] scale-[1.4] -mr-3 md:-mr-4 transition-transform duration-500 group-hover:scale-[1.45]" 
               />
               <div className="flex flex-col justify-center translate-y-0.5">
                 <span 
