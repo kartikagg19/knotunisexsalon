@@ -8,6 +8,7 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
+            <Link href="/" className="inline-block mb-4" data-testid="link-footer-logo">
               <div className="flex flex-col justify-center">
                 <span 
                   className="block text-4xl md:text-[2.75rem] leading-[0.8] tracking-normal gradient-heading pb-1 text-glow"
