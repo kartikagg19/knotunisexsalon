@@ -88,8 +88,8 @@ export const serviceCategories: ServiceCategory[] = [
         price: "₹499",
       },
       {
-        name: "Hair SPA – Chooel",
-        desc: "Premium Chooel brand spa ritual for deep conditioning.",
+        name: "Hair SPA – Loreal",
+        desc: "Premium Loreal brand spa ritual for deep conditioning.",
         duration: "60 min",
         price: "₹799",
       },
@@ -136,8 +136,8 @@ export const serviceCategories: ServiceCategory[] = [
         price: "₹1,999",
       },
       {
-        name: "Keratin – Konafine",
-        desc: "Konafine keratin treatment for intense frizz control.",
+        name: "Keratin – Kerafine",
+        desc: "Kerafine keratin treatment for intense frizz control.",
         duration: "180 min",
         price: "₹2,999",
       },
@@ -148,7 +148,7 @@ export const serviceCategories: ServiceCategory[] = [
         price: "₹3,499",
       },
       {
-        name: "G.K. Keratin Smoothing",
+        name: "G.K. Keratin",
         desc: "G.K. keratin for ultimate silkiness. Lasts up to 4 months.",
         duration: "180 min",
         price: "₹4,599",
@@ -193,11 +193,11 @@ export const serviceCategories: ServiceCategory[] = [
         name: "Temporary Nails (Hand)",
         desc: "Quick, beautiful temporary nail extensions for hands.",
         duration: "30 min",
-        price: "₹800",
+        price: "₹300",
       },
       {
-        name: "Dormant Nail Extensions",
-        desc: "Long-lasting dormant nail set for a polished, ready look.",
+        name: "Permanent Nail Extensions",
+        desc: "Long-lasting permanent nail set for a polished, ready look.",
         duration: "45 min",
         price: "₹500",
       },
@@ -235,7 +235,7 @@ export const serviceCategories: ServiceCategory[] = [
         name: "Glitter Ombre Nails",
         desc: "Sparkly glitter gradient nail art for special occasions.",
         duration: "45 min",
-        price: "₹750",
+        price: "₹999",
       },
       {
         name: "Cat Eye Nail Paint",
@@ -357,12 +357,6 @@ export const serviceCategories: ServiceCategory[] = [
     image:
       "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=900&q=85&auto=format&fit=crop",
     items: [
-      {
-        name: "D-Tan",
-        desc: "Removes sun damage and evens out skin tone.",
-        duration: "20 min",
-        price: "₹199",
-      },
       {
         name: "Cleanup – Basic",
         desc: "Quick refresh for congestion-free, radiant skin.",
