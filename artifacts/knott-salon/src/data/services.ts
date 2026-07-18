@@ -322,7 +322,7 @@ export const serviceCategories: ServiceCategory[] = [
         name: "Normal Makeup",
         desc: "Soft, natural glam for daytime events and outings.",
         duration: "45 min",
-        price: "₹999",
+        price: "₹1,800",
       },
       {
         name: "HD Glam Makeup",
@@ -391,7 +391,7 @@ export const serviceCategories: ServiceCategory[] = [
         name: "Diamond Cleanup",
         desc: "Diamond-infused cleanup for crystal-clear skin.",
         duration: "30 min",
-        price: "₹580",
+        price: "₹500",
       },
       {
         name: "FYC Gold Facial",
@@ -529,7 +529,7 @@ export const serviceCategories: ServiceCategory[] = [
         name: "Body Polishing",
         desc: "Full-body exfoliation and brightening for silky, even-toned skin.",
         duration: "90 min",
-        price: "₹1,499",
+        price: "₹2,000",
       },
       {
         name: "Bleach – Normal",
@@ -782,6 +782,33 @@ export const serviceCategories: ServiceCategory[] = [
         desc: "Elaborate bridal hairstyling paired with saree or lehenga draping.",
         duration: "60 min",
         price: "from ₹3,000",
+      },
+    ],
+  },
+  {
+    key: "chemical-work",
+    label: "Chemical Work",
+    tagline: "Transform your hair texture safely",
+    image:
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=85&auto=format&fit=crop",
+    items: [
+      {
+        name: "Smoothing",
+        desc: "Professional hair smoothing for silky, frizz-free straight hair.",
+        duration: "180 min",
+        price: "₹3,000 – ₹5,000",
+      },
+      {
+        name: "Nanoplastia",
+        desc: "Advanced amino-acid smoothing treatment for straight, shiny, healthy hair.",
+        duration: "210 min",
+        price: "₹4,000 – ₹8,000",
+      },
+      {
+        name: "Botox",
+        desc: "Deep conditioning hair botox to repair damage and eliminate frizz.",
+        duration: "180 min",
+        price: "₹3,000 – ₹5,000",
       },
     ],
   },
