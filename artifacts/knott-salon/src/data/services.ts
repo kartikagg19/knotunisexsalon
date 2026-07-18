@@ -415,7 +415,7 @@ export const serviceCategories: ServiceCategory[] = [
         name: "FYC Wine Cleanup",
         desc: "Wine-infused FYC cleanup for antioxidant skin boost.",
         duration: "30 min",
-        price: "₹1,800",
+        price: "₹1,200",
       },
       {
         name: "Raga Facial",
@@ -502,7 +502,7 @@ export const serviceCategories: ServiceCategory[] = [
         price: "₹3,500",
       },
       {
-        name: "Korean Skull Facial",
+        name: "Korean Glass Facial",
         desc: "Advanced Korean facial treatment for deep skin renewal.",
         duration: "75 min",
         price: "₹1,999",
@@ -517,7 +517,7 @@ export const serviceCategories: ServiceCategory[] = [
         name: "Body Massage (Oil)",
         desc: "Full-body therapeutic oil massage to relieve stress and tension.",
         duration: "60 min",
-        price: "₹999",
+        price: "₹1,200",
       },
       {
         name: "Body Massage (Cream)",
@@ -613,7 +613,7 @@ export const serviceCategories: ServiceCategory[] = [
         price: "₹30",
       },
       {
-        name: "Sidelocks Threading",
+        name: "Sidelocks Waxing",
         desc: "Neat sidelock hair removal with threading.",
         duration: "5 min",
         price: "₹100",
