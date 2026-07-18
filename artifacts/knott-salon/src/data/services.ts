@@ -793,7 +793,7 @@ export const serviceCategories: ServiceCategory[] = [
       "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=85&auto=format&fit=crop",
     items: [
       {
-        name: "Smoothing",
+        name: "Smoothning",
         desc: "Professional hair smoothing for silky, frizz-free straight hair.",
         duration: "180 min",
         price: "₹3,000 – ₹5,000",
